@@ -13,7 +13,8 @@
 	<tbody>
 		<?php
             $status_aliran = 'MASUK';
-			$queryspl = mysqli_query ($konek, "SELECT id_aliran, bahan_baku.id_bahan_baku, aliran_bahan_baku_dan_produk.id_bahan_baku, bahan_baku.nama_bahan_baku, aliran_bahan_baku_dan_produk.id_gudang, gudang.id_gudang, gudang.nama_gudang, qty, aliran_bahan_baku_dan_produk.id_user, user.id_user, user.username, DAY(tanggal) as Hari, MONTHNAME(tanggal) as Bulan, YEAR(tanggal) as Tahun, status_aliran FROM aliran_bahan_baku_dan_produk JOIN gudang ON aliran_bahan_baku_dan_produk.id_gudang = gudang.id_gudang JOIN user ON aliran_bahan_baku_dan_produk.id_user = user.id_user LEFT JOIN bahan_baku ON aliran_bahan_baku_dan_produk.id_bahan_baku = bahan_baku.id_bahan_baku WHERE status_aliran='$status_aliran'");
+            $id_bahan_baku = null;
+			$queryspl = mysqli_query ($konek, "SELECT id_aliran, bahan_baku.id_bahan_baku, aliran_bahan_baku_dan_produk.id_bahan_baku, bahan_baku.nama_bahan_baku, aliran_bahan_baku_dan_produk.id_gudang, gudang.id_gudang, gudang.nama_gudang, qty, aliran_bahan_baku_dan_produk.id_user, user.id_user, user.username, DAY(tanggal) as Hari, MONTHNAME(tanggal) as Bulan, YEAR(tanggal) as Tahun, status_aliran FROM aliran_bahan_baku_dan_produk JOIN gudang ON aliran_bahan_baku_dan_produk.id_gudang = gudang.id_gudang JOIN user ON aliran_bahan_baku_dan_produk.id_user = user.id_user LEFT JOIN bahan_baku ON aliran_bahan_baku_dan_produk.id_bahan_baku = bahan_baku.id_bahan_baku WHERE status_aliran='$status_aliran' AND aliran_bahan_baku_dan_produk.id_bahan_baku!='$id_bahan_baku'");
 			if($queryspl == false){
 				die ("Terjadi Kesalahan : ". mysqli_error($konek));
 			}
