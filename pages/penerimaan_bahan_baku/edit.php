@@ -1,128 +1,115 @@
-<?php 
-include '../config/koneksi.php';
-
-$id_pengeluaran  = $_GET["id_pengeluaran"];
-
-$querypengeluaran = mysqli_query($konek, "SELECT * FROM pengeluaran WHERE id_pengeluaran='$id_pengeluaran' GROUP BY nama_pengeluaran");
-if($querypengeluaran == false){
-  die ("Terjadi Kesalahan : ". mysqli_error($konek));
-}
-while($pengeluaran = mysqli_fetch_array($querypengeluaran)){
-
+<?php
+    $id_aliran = $_GET['id_aliran'];
+    $sql = "SELECT
+            	id_aliran,
+            	id_gudang,
+            	id_bahan_baku,
+            	id_produk,
+            	qty,
+            	id_user,
+            	tanggal,
+            	status_aliran
+            FROM
+            	aliran_bahan_baku_dan_produk
+            WHERE
+            	id_aliran = '$id_aliran'";
+    $result = mysqli_query($konek, $sql);
+    $get=mysqli_fetch_assoc($result);
 ?>
+
 <section class="content">
-        <div class="container-fluid">
-            <div class="block-header">
-                <h2>PENGELUARAN</h2> 
-            </div>
-         <!-- Input -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card-add">
-                        <div class="header">
-                            <h2>
-                                Edit PENGELUARAN                                <small>Edit data kelengkapan pengeluaran</small>
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            <div class="row clearfix">
-                              <form action="../controller/pengeluaran/edit.php" id="sign_in" method="POST">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>PENERIMAAN BAHAN BAKU</h2>
+        </div>
+        <!-- Input -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card-add">
+                    <div class="header">
+                        <h2>
+                            EDIT PENERIMAAN
+                            <small>Data kelengkapan penerimaan</small>
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="row clearfix">
+                            <form action="../controller/penerimaan_bahan_baku/edit.php" id="sign_in" method="POST">
+                                <input type="hidden" name="id_aliran" value="<?= $id_aliran ?>">
                                 <div class="col-sm-6">
-                                    <div class="input-group">
+                                     <div class="input-group">
                                         <span class="input-group-addon">
-                                            <i class="material-icons">person</i>
+                                            <i class="material-icons">dns</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="text" name="nama_pengeluaran" class="form-control" placeholder="Nama Pengeluaran" value="<?php echo $pengeluaran["nama_pengeluaran"]; ?>" required>
+                                            <select name="id_bahan_baku" class="form-control show-tick"  data-live-search="true" placeholder="Bahan Baku" required>
+                                                <?php
+                                                $sql = "SELECT
+                                                        	id_bahan_baku,
+                                                        	kode_bahan_baku,
+                                                        	nama_bahan_baku
+                                                        FROM
+                                                        	bahan_baku";
+                                                $result = mysqli_query($konek, $sql);
+                                                while ($row=mysqli_fetch_assoc($result)) {
+                                                    $id_bahan_baku = $row['id_bahan_baku'];
+                                                    $kode_bahan_baku = $row['kode_bahan_baku'];
+                                                    $nama_bahan_baku = $row['nama_bahan_baku'];
+                                                    ?>
+                                                    <option value="<?= $id_bahan_baku ?>" <?php if($id_bahan_baku == $get['id_bahan_baku']) echo "selected"; ?>><?= $kode_bahan_baku.' - '.$nama_bahan_baku ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                     <div class="input-group">
+                                <div class="col-sm-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">archive</i>
+                                        </span>
+                                        <div class="form-line">
+                                            <input type="number" name="qty" class="form-control" placeholder="Stok" min="0" value="<?= $get['qty'] ?>" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
                                         <span class="input-group-addon">
                                             <i class="material-icons">home</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="text" name="alamat" class="form-control" placeholder="Alamat" value="<?php echo $pengeluaran["alamat"]; ?>" required>
+                                            <select name="id_gudang" class="form-control show-tick"  data-live-search="true" placeholder="Lokasi Penyimpanan" required>
+                                                <?php
+                                                $sql = "SELECT
+                                                            id_gudang,
+                                                        	nama_gudang
+                                                        FROM
+                                                        	gudang";
+                                                $result = mysqli_query($konek, $sql);
+                                                while ($row=mysqli_fetch_assoc($result)) {
+                                                    $id_gudang = $row['id_gudang'];
+                                                    $nama_gudang = $row['nama_gudang'];
+                                                    ?>
+                                                    <option value="<?= $id_gudang ?>" <?php if($id_gudang == $get['id_gudang']) echo "selected"; ?>><?= $nama_gudang ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">email</i>
-                                        </span>
-                                        <div class="form-line">
-                                            <input type="text" name="email" class="form-control email" placeholder="Email" value="<?php echo $pengeluaran["email"]; ?>" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">phone_iphone</i>
-                                        </span>
-                                        <div class="form-line">
-                                            <input type="text" name="telepon" class="form-control" placeholder="Telepon" value="<?php echo $pengeluaran["telepon"]; ?>" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">attach_money</i>
-                                        </span>
-                                        <div class="form-line">
-                                            <input type="text" name="kredit_limit" class="form-control" placeholder="Kredit Limit" value="<?php echo $pengeluaran["kredit_limit"]; ?>" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 hidden">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">person</i>
-                                        </span>
-                                        <div class="form-line">
-                                            <input type="text" name="id_user" class="form-control" placeholder="id_user" value="<?php echo $pengeluaran["id_user"]; ?>">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 hidden">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">person</i>
-                                        </span>
-                                        <div class="form-line">
-                                            <input type="text" name="id_pengeluaran" class="form-control" placeholder="id_pengeluaran" value="<?php echo $pengeluaran["id_pengeluaran"]; ?>">
-                                        </div>
-                                    </div>
-                                </div>
-		                        <div class="col-md-12">
-		                            <button id="edit_pengeluaran" class="btn btn-lg bg-gradient waves-effect" type="submit">EDIT</button>
-		                            <a href="index.php?pengeluaran" class="btn btn-lg bg-gradient-red waves-effect">BATAL</a>
-		                        </div>
-                              </form>
-                            </div>
+    	                        <div class="col-md-12">
+    	                            <button id="" class="btn btn-lg bg-gradient waves-effect" type="submit">EDIT</button>
+    	                            <a href="index.php?penerimaan_bahan_baku" class="btn btn-lg bg-gradient-red waves-effect">BATAL</a>
+    	                        </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- #END# Input -->
         </div>
-    </section>
-    <?php
-      }
-    ?>
-    
+        <!-- #END# Input -->
+    </div>
+</section>

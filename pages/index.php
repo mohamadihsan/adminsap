@@ -54,16 +54,16 @@
     <!-- Routing Menu -->
     <?php
     if (isset($_GET['pengeluaran_produk'])){
-          include "../pages/pengeluaran_produk/pengeluaran_produk.php";
+          include "../pages/pengeluaran_produk/index.php";
 
       }else if (isset($_GET['pengeluaran_bahan_baku'])){
-         include "../pages/pengeluaran_produk/pengeluaran_bahan_baku.php";
+         include "../pages/pengeluaran_bahan_baku/index.php";
 
      }else if (isset($_GET['penerimaan_produk'])){
-         include "../pages/penerimaan_produk/penerimaan_produk.php";
+         include "../pages/penerimaan_produk/index.php";
 
      }else if (isset($_GET['penerimaan_bahan_baku'])){
-          include "../pages/penerimaan_bahan_baku/penerimaan_bahan_baku.php";
+          include "../pages/penerimaan_bahan_baku/index.php";
 
        }else if (isset($_GET['pemesanan_produk'])){
          include "../pages/pemesanan_produk/index.php";
@@ -144,7 +144,27 @@
       }else if (isset($_GET['id_supplier'])){
          include "supplier/edit.php";
 
-      }else if (isset($_GET['no_invoice'])){
+     }else if (isset($_GET['tambah_penerimaan_bahan_baku'])){
+         include "penerimaan_bahan_baku/add.php";
+     }else if (isset($_GET['edit_penerimaan_bahan_baku'])){
+         include "penerimaan_bahan_baku/edit.php";
+
+     }else if (isset($_GET['tambah_penerimaan_produk'])){
+          include "penerimaan_produk/add.php";
+      }else if (isset($_GET['edit_penerimaan_produk'])){
+          include "penerimaan_produk/edit.php";
+
+      }else if (isset($_GET['tambah_pengeluaran_bahan_baku'])){
+           include "pengeluaran_bahan_baku/add.php";
+       }else if (isset($_GET['edit_pengeluaran_bahan_baku'])){
+           include "pengeluaran_bahan_baku/edit.php";
+
+       }else if (isset($_GET['tambah_pengeluaran_produk'])){
+            include "pengeluaran_produk/add.php";
+        }else if (isset($_GET['edit_pengeluaran_produk'])){
+            include "pengeluaran_produk/edit.php";
+
+         }else if (isset($_GET['no_invoice'])){
          include "order/rincian.php";
 
       }else if (isset($_GET['komposisi'])){

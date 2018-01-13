@@ -29,18 +29,6 @@
                                 INPUT BAHAN - BAKU
                                 <small>Data kelengkapan produk</small>
                             </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
                         </div>
                         <div class="body">
                             <div class="row clearfix">
@@ -70,21 +58,21 @@
                                         <span class="input-group-addon">
                                             <i class="material-icons">home</i>
                                         </span>
-                                            <select name="lokasi_penyimpanan" class="form-control show-tick"  data-live-search="true" placeholder="Lokasi Penyimpanan" required>
-                                                <?php
-                                                $sql = "SELECT
-                                                        	nama_gudang
-                                                        FROM
-                                                        	gudang";
-                                                $result = mysqli_query($konek, $sql);
-                                                while ($row=mysqli_fetch_assoc($result)) {
-                                                    $nama_gudang = $row['nama_gudang'];
-                                                    ?>
-                                                    <option value="<?= $nama_gudang ?>"><?= $nama_gudang ?></option>
-                                                    <?php
-                                                }
+                                        <select name="lokasi_penyimpanan" class="form-control show-tick"  data-live-search="true" placeholder="Lokasi Penyimpanan" required>
+                                            <?php
+                                            $sql = "SELECT
+                                                    	nama_gudang
+                                                    FROM
+                                                    	gudang";
+                                            $result = mysqli_query($konek, $sql);
+                                            while ($row=mysqli_fetch_assoc($result)) {
+                                                $nama_gudang = $row['nama_gudang'];
                                                 ?>
-                                            </select>
+                                                <option value="<?= $nama_gudang ?>"><?= $nama_gudang ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
                                  <div class="col-sm-2">

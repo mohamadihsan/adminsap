@@ -72,12 +72,12 @@
                             <span>Data Persediaan</span>
                         </a>
                         <ul class="ml-menu">
-                            <!-- <li>
+                            <li>
                                 <a href="index.php?penerimaan_bahan_baku">
                                     <i class="material-icons">swap_horiz</i>
                                     <span>Penerimaan Bahan Baku</span>
                                 </a>
-                            </li> -->
+                            </li>
 
                             <li>
                                 <a href="index.php?pengeluaran_bahan_baku">
@@ -86,12 +86,12 @@
                                 </a>
                             </li>
 
-                            <!-- <li>
+                            <li>
                                 <a href="index.php?penerimaan_produk">
                                     <i class="material-icons">swap_vert</i>
                                     <span>Penerimaan Produk</span>
                                 </a>
-                            </li> -->
+                            </li>
 
                             <li>
                                 <a href="index.php?pengeluaran_produk">
