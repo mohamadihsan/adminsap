@@ -74,7 +74,7 @@
       }else if (isset($_GET['retur'])){
          include "../pages/retur_produk/index.php";
 
-      }else if (isset($_GET['komposisi-produk'])){
+     }else if (isset($_GET['komposisi_produk'])){
          include "../pages/komposisi_produk/index.php";
 
       }else if (isset($_GET['pemantauan-produksi'])){
@@ -129,11 +129,13 @@
       }else if (isset($_GET['id_produk'])){
          include "produk/edit.php";
 
-      }else if (isset($_GET['tambah-komposisi'])){
+     }else if (isset($_GET['tambah_komposisi_produk'])){
          include "komposisi_produk/add.php";
-      }else if (isset($_GET['komposisi'])){
+     }else if (isset($_GET['edit_komposisi_produk'])){
          include "komposisi_produk/edit.php";
 
+     }else if (isset($_GET['detail_komposisi_produk'])){
+         include "komposisi_produk/detail.php";
       }else if (isset($_GET['tambah-pemantauan'])){
          include "pemantauan_produksi/add.php";
       }else if (isset($_GET['id_monitoring_produksi'])){

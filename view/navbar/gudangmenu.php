@@ -108,7 +108,7 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="index.php?penerimaan_bahan_baku">
+                                <a href="index.php?komposisi_produk">
                                     <i class="material-icons">receipt</i>
                                     <span>Komposisi Produk</span>
                                 </a>
