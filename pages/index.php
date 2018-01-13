@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>CV. SAP | DASHBOARD</title>
-    <?php 
+    <?php
         include "../view/dashboard/css.php";
     ?>
 </head>
@@ -32,12 +32,12 @@
         </div>
     </div>
     <!-- #END# Search Bar -->
-    <?php 
+    <?php
         include "../view/navbar/topbar.php";
     ?>
 
     <!-- Menuju Menu Sesuai Hak Akses -->
-    <?php 
+    <?php
 
     if($_SESSION['id_user'] == 3 ) {
         require('../view/navbar/salesmenu.php');
@@ -50,16 +50,22 @@
     }
 
     ?>
-    
+
     <!-- Routing Menu -->
     <?php
     if (isset($_GET['pengeluaran_produk'])){
           include "../pages/pengeluaran_produk/pengeluaran_produk.php";
 
-      }else if (isset($_GET['pengeluaran_bahanbaku'])){
+      }else if (isset($_GET['pengeluaran_bahan_baku'])){
          include "../pages/pengeluaran_produk/pengeluaran_bahan_baku.php";
 
-      }else if (isset($_GET['pemesanan_produk'])){
+     }else if (isset($_GET['penerimaan_produk'])){
+         include "../pages/penerimaan_produk/penerimaan_produk.php";
+
+     }else if (isset($_GET['penerimaan_bahan_baku'])){
+          include "../pages/penerimaan_bahan_baku/penerimaan_bahan_baku.php";
+
+       }else if (isset($_GET['pemesanan_produk'])){
          include "../pages/pemesanan_produk/index.php";
 
       }else if (isset($_GET['bahan_baku'])){
@@ -143,7 +149,7 @@
 
       }else if (isset($_GET['komposisi'])){
          include "../produk/komposisi.php";
-         
+
       }else if (isset($_GET['logout'])){
          include "../controller/logout.php";
       }else{
@@ -151,7 +157,7 @@
       }
       ?>
 
-   <?php 
+   <?php
         include "../view/dashboard/js.php";
     ?>
 </body>
