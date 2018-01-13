@@ -122,10 +122,10 @@
                             <i class="material-icons">account_circle</i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header"><?php echo "".$_SESSION["username"]."" ?></li>
+                            <li class="header"><?php echo "".ucwords($_SESSION["hak_akses"])."" ?></li>
                             <li class="body">
                                 <ul class="menu">
-                                
+
                                 </ul>
                             </li>
                         </ul>

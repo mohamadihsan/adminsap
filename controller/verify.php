@@ -9,20 +9,20 @@ $query = mysqli_query ($konek, "SELECT * FROM user WHERE username='$Username' AN
 
 // Validasi Login
 if ($_POST){
-	
+
 	$queryuser = mysqli_query ($konek, "SELECT * FROM user WHERE username='$Username' AND password='$Password'");
-		
-	$user = mysqli_fetch_array ($queryuser);
+
+	$user = mysqli_fetch_assoc ($queryuser);
 
 	if($user){
 			if (md5($Password, $user["password"])){
-				
+
 				$_SESSION["id_user"] 			= $user["id_user"];
 				$_SESSION["username"] 			= $user["username"];
 				$_SESSION["password"] 			= $user["password"];
 				$_SESSION["hak_akses"] 	        = $user["hak_akses"];
 				$_SESSION["Login"] 			    = true;
-				
+
 				if ($_SESSION["hak_akses"] == 'sales admin'){
 					header ("Location: ../pages/index.php?".$_SESSION['id_user']."". ($_SESSION['username'])."");
 					exit();
@@ -67,5 +67,5 @@ if ($_POST){
 		exit();
 	}
 }
-	
+
 ?>

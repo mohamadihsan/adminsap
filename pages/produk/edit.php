@@ -1,4 +1,4 @@
-<?php 
+<?php
 include '../config/koneksi.php';
 
 $id_produk  = $_GET["id_produk"];
@@ -13,7 +13,7 @@ while($produk = mysqli_fetch_array($queryproduk)){
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>PRODUK</h2> 
+                <h2>PRODUK</h2>
             </div>
          <!-- Input -->
             <div class="row clearfix">
@@ -76,7 +76,7 @@ while($produk = mysqli_fetch_array($queryproduk)){
                                             <i class="material-icons">attach_money</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="text" name="harga" class="form-control" placeholder="Harga" value="<?php echo $produk["harga"]; ?>" required>
+                                            <input type="number" name="harga" min="0" class="form-control" placeholder="Harga" value="<?php echo $produk["harga"]; ?>" required>
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +86,21 @@ while($produk = mysqli_fetch_array($queryproduk)){
                                             <i class="material-icons">home</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="text" name="lokasi_penyimpanan" class="form-control" placeholder="Lokasi Penyimpanan" value="<?php echo $produk["lokasi_penyimpanan"]; ?>" required>
+                                            <select name="lokasi_penyimpanan" class="form-control show-tick" data-live-search="true" placeholder="Tipe Pelanggan">
+                                                <?php
+                                                $sql = "SELECT
+                                                        	nama_gudang
+                                                        FROM
+                                                        	gudang";
+                                                $result = mysqli_query($konek, $sql);
+                                                while ($row=mysqli_fetch_assoc($result)) {
+                                                    $nama_gudang = $row['nama_gudang'];
+                                                    ?>
+                                                    <option value="<?= $nama_gudang ?>" <?php if($nama_gudang == $produk['lokasi_penyimpanan']) echo "selected"; ?> ><?= $nama_gudang ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -101,19 +115,21 @@ while($produk = mysqli_fetch_array($queryproduk)){
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                            <select name="id_supplier" class="form-control show-tick" " data-live-search="true">
-                                                <?php
-                                                include '../config/koneksi.php';
-                                                
-                                                $querysupplier = mysqli_query($konek, "SELECT * FROM supplier");
-                                                if($querysupplier == false){
-                                                    die ("Terdapat Kesalahan : ". mysqli_error($konek));
-                                                }
-                                                while ($supplier = mysqli_fetch_array($querysupplier)){
-                                                    echo "<option value='$supplier[id_supplier]'>$supplier[nama_supplier]</option>";
-                                                }
+                                    <select name="id_supplier" class="form-control show-tick" data-live-search="true">
+                                        <?php
+                                        include '../config/koneksi.php';
+
+                                        $querysupplier = mysqli_query($konek, "SELECT * FROM supplier");
+                                        if($querysupplier == false){
+                                            die ("Terdapat Kesalahan : ". mysqli_error($konek));
+                                        }
+                                        while ($supplier = mysqli_fetch_array($querysupplier)){
                                             ?>
-                                            </select>
+                                            <option value="<?= $supplier['id_supplier'] ?>" <?php if($supplier['id_supplier']==$produk['id_supplier']) echo "selected" ?>><?= $supplier['nama_supplier'] ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                                 <div class="col-sm-6 hidden">
                                     <div class="input-group">
@@ -151,4 +167,3 @@ while($produk = mysqli_fetch_array($queryproduk)){
     <?php
       }
     ?>
-    

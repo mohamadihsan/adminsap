@@ -65,21 +65,21 @@ while($bb = mysqli_fetch_array($querybb)){
                                         <span class="input-group-addon">
                                             <i class="material-icons">home</i>
                                         </span>
-                                            <select name="lokasi_penyimpanan" class="form-control show-tick" data-live-search="true" placeholder="Tipe Pelanggan">
-                                                <?php
-                                                $sql = "SELECT
-                                                        	nama_gudang
-                                                        FROM
-                                                        	gudang";
-                                                $result = mysqli_query($konek, $sql);
-                                                while ($row=mysqli_fetch_assoc($result)) {
-                                                    $nama_gudang = $row['nama_gudang'];
-                                                    ?>
-                                                    <option value="<?= $nama_gudang ?>" <?php if($nama_gudang == $bb['lokasi_penyimpanan']) echo "selected"; ?> ><?= $nama_gudang ?></option>
-                                                    <?php
-                                                }
+                                        <select name="lokasi_penyimpanan" class="form-control show-tick" data-live-search="true" placeholder="Tipe Pelanggan">
+                                            <?php
+                                            $sql = "SELECT
+                                                    	nama_gudang
+                                                    FROM
+                                                    	gudang";
+                                            $result = mysqli_query($konek, $sql);
+                                            while ($row=mysqli_fetch_assoc($result)) {
+                                                $nama_gudang = $row['nama_gudang'];
                                                 ?>
-                                            </select>
+                                                <option value="<?= $nama_gudang ?>" <?php if($nama_gudang == $bb['lokasi_penyimpanan']) echo "selected"; ?> ><?= $nama_gudang ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
                                  <div class="col-sm-2">

@@ -12,10 +12,11 @@ $lokasi					       = $_POST["lokasi_penyimpanan"];
 $stok				           = $_POST["stok"];
 $id_user				       = $_POST["id_user"];
 $id_supplier				   = $_POST["id_supplier"];
+$status_komposisi 			   = 'BELUM';
 
 
-if ($add = mysqli_query($konek, "INSERT INTO produk (kode_produk, nama_produk, satuan, harga, lokasi_penyimpanan, id_jenis, id_kemasan, id_merk, stok, id_user, id_supplier) VALUES
-	('$kode_produk','$nama_produk','$satuan','$harga','$lokasi', '$id_jenis', '$id_kemasan', '$id_merk', '$stok','$id_user','$id_supplier')")){
+if ($add = mysqli_query($konek, "INSERT INTO produk (kode_produk, nama_produk, satuan, harga, status_komposisi, lokasi_penyimpanan, id_jenis, id_kemasan, id_merk, stok, id_user, id_supplier) VALUES
+	('$kode_produk','$nama_produk','$satuan','$harga', '$status_komposisi', '$lokasi', '$id_jenis', '$id_kemasan', '$id_merk', '$stok','$id_user','$id_supplier')")){
 		header("Location: ../../pages/index.php?produk");
 		exit();
 	}

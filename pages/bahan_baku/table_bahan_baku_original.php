@@ -32,8 +32,9 @@
 
 				echo "
 						<td>
-							<a href='index.php?id_bahan_baku=$spl[id_bahan_baku]'><button type='button' class='btn bg-gradient btn-circle-table waves-effect waves-circle waves-float'; title='Ubah'><i class='material-icons'>create</i></button></a>
-							<a data-toggle='modal' data-target='#hapus' onclick='return hapus(\"".$spl['id_bahan_baku']."\")'  class='delete-link'><button type='button' class='btn bg-gradient-red btn-circle-table waves-effect waves-circle waves-float' title='Hapus'><i class='material-icons'>delete</i></button></a>
+							<a href='index.php?id_bahan_baku=$spl[id_bahan_baku]'><button type='button' class='btn bg-gradient btn-circle-table waves-effect waves-circle waves-float';><i class='material-icons'>create</i></button></a>
+							<a href='index.php?id_bahan_baku=$spl[id_bahan_baku]'><button type='button' class='btn bg-gradient btn-circle-table waves-effect waves-circle waves-float';><i class='material-icons'>call_to_action</i></button></a>
+							<a data-toggle='modal' data-target='#hapus' onclick='return hapus(\"".$spl['id_bahan_baku']."\")'  class='delete-link'><button type='button' class='btn bg-gradient-red btn-circle-table waves-effect waves-circle waves-float'><i class='material-icons'>delete</i></button></a>
 						</td>
 					</tr>";
 			}
