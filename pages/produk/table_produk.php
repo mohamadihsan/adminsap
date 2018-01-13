@@ -8,7 +8,12 @@
 			<th>Komposisi</th>
 			<th>Lokasi Penyimpanan</th>
 			<th>Stok</th>
-			<th>Action</th>
+            <?php
+            if($_SESSION["hak_akses"] == 'kepala produksi'){
+                ?>
+			    <th>Action</th>
+                <?php
+            } ?>
 		</tr>
 	</thead>
 	<tbody>
@@ -33,13 +38,17 @@
 						};
 
 				echo "	<td>$spl[lokasi_penyimpanan]</td>
-						<td>$spl[stok]</td>
-						<td>
-							<a href='index.php?id_produk=$spl[id_produk]'><button type='button' class='btn bg-gradient btn-circle-table waves-effect waves-circle waves-float'; title='Ubah'><i class='material-icons'>create</i></button></a>
-							<a href='../komposisi/index.php?id_produk=$spl[id_produk]'><button type='button' class='btn bg-gradient btn-circle-table waves-effect waves-circle waves-float'; title='Komposisi'><i class='material-icons'>call_to_action</i></button></a>
-							<a data-toggle='modal' data-target='#hapus' onclick='return hapus(\"".$spl['id_produk']."\")'  class='delete-link'><button type='button' class='btn bg-gradient-red btn-circle-table waves-effect waves-circle waves-float' title='Hapus'><i class='material-icons'>delete</i></button></a
-                        </td>
-					</tr>";
+						<td>$spl[stok]</td>";
+
+                if($_SESSION["hak_akses"] == 'kepala produksi'){
+
+    				echo "	<td>
+    							<a href='index.php?id_produk=$spl[id_produk]'><button type='button' class='btn bg-gradient btn-circle-table waves-effect waves-circle waves-float'; title='Ubah'><i class='material-icons'>create</i></button></a>
+    							<a href='../komposisi/index.php?id_produk=$spl[id_produk]'><button type='button' class='btn bg-gradient btn-circle-table waves-effect waves-circle waves-float'; title='Komposisi'><i class='material-icons'>call_to_action</i></button></a>
+    							<a data-toggle='modal' data-target='#hapus' onclick='return hapus(\"".$spl['id_produk']."\")'  class='delete-link'><button type='button' class='btn bg-gradient-red btn-circle-table waves-effect waves-circle waves-float' title='Hapus'><i class='material-icons'>delete</i></button></a
+                            </td>
+    					</tr>";
+                }
 			}
 		?>
 	</tbody>

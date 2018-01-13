@@ -111,7 +111,7 @@
          include "../pages/peramalan_produk/index.php";
 
 
-      }else if (isset($_GET['tambah-peramalan'])){
+     }else if (isset($_GET['tambah_peramalan'])){
          include "peramalan_produk/add.php";
 
       }else if (isset($_GET['tambah-bahanbaku'])){
