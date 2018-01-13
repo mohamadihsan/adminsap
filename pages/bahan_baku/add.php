@@ -18,7 +18,7 @@
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>BAHAN - BAKU</h2> 
+                <h2>BAHAN - BAKU</h2>
             </div>
          <!-- Input -->
             <div class="row clearfix">
@@ -70,10 +70,20 @@
                                         <span class="input-group-addon">
                                             <i class="material-icons">home</i>
                                         </span>
-                                            <select name="lokasi_penyimpanan" class="form-control show-tick" " data-live-search="true" placeholder="Tipe Pelanggan">
-                                                <option value="Gudang 1">Gudang 1</option>
-                                                <option value="Gudang 2">Gudang 2</option>
-                                                <option value="Gudang 3">Gudang 3</option>
+                                            <select name="lokasi_penyimpanan" class="form-control show-tick"  data-live-search="true" placeholder="Lokasi Penyimpanan" required>
+                                                <?php
+                                                $sql = "SELECT
+                                                        	nama_gudang
+                                                        FROM
+                                                        	gudang";
+                                                $result = mysqli_query($konek, $sql);
+                                                while ($row=mysqli_fetch_assoc($result)) {
+                                                    $nama_gudang = $row['nama_gudang'];
+                                                    ?>
+                                                    <option value="<?= $nama_gudang ?>"><?= $nama_gudang ?></option>
+                                                    <?php
+                                                }
+                                                ?>
                                             </select>
                                     </div>
                                 </div>
@@ -83,7 +93,7 @@
                                             <i class="material-icons">archive</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="text" name="stock" class="form-control" placeholder="Stok" required>
+                                            <input type="number" name="stock" class="form-control" placeholder="Stok" min="0" required>
                                         </div>
                                     </div>
                                 </div>
@@ -110,4 +120,3 @@
             <!-- #END# Input -->
         </div>
     </section>
-    
