@@ -6,8 +6,13 @@
 			<th>Stock</th>
 			<th>Lokasi Penyimpanan</th>
 			<th>Status</th>
-			<th>Action</th>
-		</tr>
+            <?php
+            if($_SESSION["hak_akses"] == 'admin gudang'){
+                ?>
+			    <th>Action</th>
+                <?php
+            } ?>
+        </tr>
 	</thead>
 	<tbody>
 		<?php
@@ -30,12 +35,16 @@
 						  echo" <td><button class='btn-status bg-gradient-red waves-effect'>HABIS</button></td>";
 						};
 
-				echo "
-						<td>
-							<a href='index.php?id_bahan_baku=$spl[id_bahan_baku]'><button type='button' class='btn bg-gradient btn-circle-table waves-effect waves-circle waves-float'; title='Ubah'><i class='material-icons'>create</i></button></a>
-							<a data-toggle='modal' data-target='#hapus' onclick='return hapus(\"".$spl['id_bahan_baku']."\")'  class='delete-link'><button type='button' class='btn bg-gradient-red btn-circle-table waves-effect waves-circle waves-float' title='Hapus'><i class='material-icons'>delete</i></button></a>
-						</td>
-					</tr>";
+                    if($_SESSION["hak_akses"] == 'admin gudang'){
+        				echo "
+        						<td>
+        							<a href='index.php?id_bahan_baku=$spl[id_bahan_baku]'><button type='button' class='btn bg-gradient btn-circle-table waves-effect waves-circle waves-float'; title='Ubah'><i class='material-icons'>create</i></button></a>
+        							<a data-toggle='modal' data-target='#hapus' onclick='return hapus(\"".$spl['id_bahan_baku']."\")'  class='delete-link'><button type='button' class='btn bg-gradient-red btn-circle-table waves-effect waves-circle waves-float' title='Hapus'><i class='material-icons'>delete</i></button></a>
+        						</td>";
+
+                    }
+
+                echo "</tr>";;
 			}
 		?>
 	</tbody>

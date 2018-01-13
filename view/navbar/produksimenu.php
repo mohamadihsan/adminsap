@@ -23,13 +23,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="index.php?komposisi-produk">
+                        <a href="index.php?komposisi_produk">
                             <i class="material-icons">playlist_add_check</i>
                             <span>Komposisi Produk</span>
                         </a>
                     </li>
                     <li>
-                        <a href="index.php?pemantauan-produksi">
+                        <a href="index.php?pemantauan_produksi">
                             <i class="material-icons">airplay</i>
                             <span>Pemantauan Produksi</span>
                         </a>
