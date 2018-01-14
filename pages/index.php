@@ -74,7 +74,10 @@
       }else if (isset($_GET['retur'])){
          include "../pages/retur_produk/index.php";
 
-     }else if (isset($_GET['komposisi_produk'])){
+     }else if (isset($_GET['tambah_retur'])){
+        include "../pages/retur_produk/add.php";
+
+    }else if (isset($_GET['komposisi_produk'])){
          include "../pages/komposisi_produk/index.php";
 
       }else if (isset($_GET['pemantauan-produksi'])){
@@ -113,6 +116,13 @@
 
      }else if (isset($_GET['tambah_peramalan'])){
          include "peramalan_produk/add.php";
+
+     }else if (isset($_GET['kebutuhan_bahan_baku'])){
+         include "../pages/kebutuhan_bahan_baku/index.php";
+
+
+     }else if (isset($_GET['detail_kebutuhan_bahan_baku'])){
+         include "kebutuhan_bahan_baku/detail.php";
 
       }else if (isset($_GET['tambah-bahanbaku'])){
          include "bahan_baku/add.php";

@@ -129,6 +129,36 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">description</i>
+                            <span>Data Pemesanan</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="index.php?kebutuhan_bahan_baku">
+                                    <i class="material-icons">description</i>
+                                <span>Kebutuhan Bahan Baku</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">swap_vertical_circle</i>
+                            <span>Retur</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="index.php?retur">
+                                    <i class="material-icons">description</i>
+                                <span>Retur Produk</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="../controller/logout.php">
                             <i class="material-icons">remove_circle</i>

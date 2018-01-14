@@ -51,7 +51,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>RETUR</h2>
+            <h2>KEBUTUHAN BAHAN BAKU</h2>
         </div>
 
         <!-- Widgets -->
@@ -104,30 +104,21 @@
         <div class="row clearfix">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="card-table">
-
-                    <?php if($_SESSION["hak_akses"] == 'sales admin'){ ?>
-                        <div class="header">
-                            <div class="row clearfix">
-                               <a href="index.php?tambah_retur"><button type="button" class="btn bg-gradient btn-circle waves-effect waves-circle waves-float" style="margin-left: 10px;">
-                                    <i class="material-icons">add</i>
-                                </button></a>
-                            </div>
+                    <!-- <div class="header">
+                        <div class="row clearfix">
+                           <a href="index.php?tambah_peramalan"><button type="button" class="btn bg-gradient btn-circle waves-effect waves-circle waves-float" style="margin-left: 10px;">
+                                <i class="material-icons">add</i>
+                            </button></a>
                         </div>
-                        <?php
-                    } ?>
-                    
+                    </div> -->
                     <div class="body">
-
-                       <?php
-
-							include 'table_retur.php';
-
-                       ?>
-
+                        <?php
+                            include 'table_kebutuhan_bahan_baku.php';
+                        ?>
+                      </table>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- #END# CPU Usage -->
     </div>
 </section>
