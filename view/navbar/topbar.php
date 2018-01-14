@@ -9,7 +9,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Notifications -->
-                    <li class="dropdown">
+                    <li class="dropdown hidden">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                             <i class="material-icons">notifications</i>
                         </a>
@@ -124,9 +124,12 @@
                         <ul class="dropdown-menu">
                             <li class="header"><?php echo "".ucwords($_SESSION["hak_akses"])."" ?></li>
                             <li class="body">
-                                <ul class="menu">
-
-                                </ul>
+                                <a href="../controller/logout.php">
+                                    <ul class="menu">
+                                        <i class="material-icons">exit_to_app</i>
+                                        <span>Keluar Aplikasi</span>
+                                    </ul>
+                                </a>
                             </li>
                         </ul>
                     </li>
