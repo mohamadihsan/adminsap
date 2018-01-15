@@ -1,4 +1,4 @@
- 
+
                 <thead>
 					<tr>
 						<th>No Invoice</th>
@@ -13,7 +13,7 @@
 					<?php
 $fn = 'convert_to_rupiah';
 function convert_to_rupiah($angka)
-    {return 'Rp. '.strrev(implode('.',str_split(strrev(strval($angka)),3)));}; // Setting Untuk Fungsi Rupiah 
+    {return 'Rp. '.strrev(implode('.',str_split(strrev(strval($angka)),3)));}; // Setting Untuk Fungsi Rupiah
 ?>
 					<?php
 						$queryspl = mysqli_query ($konek, "SELECT order_penjualan.total_pembayaran, order_penjualan.id_order_penjualan, order_penjualan_detail.id_order_penjualan, order_penjualan.no_invoice, order_penjualan.tanggal_order, DAY(order_penjualan.tanggal_order) as Hari, MONTHNAME(order_penjualan.tanggal_order) as Bulan, YEAR(order_penjualan.tanggal_order) as Tahun, order_penjualan.tgl_pesan, DAY(order_penjualan.tgl_pesan) as HariPesan, MONTHNAME(order_penjualan.tgl_pesan) as BulanPesan, YEAR(order_penjualan.tgl_pesan) as TahunPesan, order_penjualan.nama_pelanggan, order_penjualan_detail.nama_produk, order_penjualan.tgl_pesan, order_penjualan.status_order, order_penjualan_detail.harga, DATE_ADD(tgl_pesan, INTERVAL 3 DAY) as kirim FROM order_penjualan INNER JOIN order_penjualan_detail WHERE order_penjualan.id_order_penjualan = order_penjualan_detail.id_order_penjualan");
@@ -28,7 +28,7 @@ function convert_to_rupiah($angka)
 									<td>$spl[no_invoice]</td>
 									<td>$spl[Hari] $spl[Bulan] $spl[Tahun]</td>
 									<td>$spl[kirim]</td>";
-									if ($spl['status_order'] == '' ){
+									if ($spl['status_order'] == 'MENUNGGU PEMBAYARAN' ){
 							          echo " <td><button class='btn-status bg-gradient-red waves-effect'>BLM BAYAR</button></td>";
 									}else{
 									  echo" <td><button class='btn-status bg-gradient-green waves-effect'>SDH BAYAR</button></td>";
