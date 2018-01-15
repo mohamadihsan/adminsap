@@ -7,29 +7,29 @@ $jumlah_penjualan	           = $_POST["jumlah_penjualan"];
 $periode                       = $_POST["bulan"].' '.$_POST['tahun'];
 
 if ($_POST['bulan'] == '01') {
-    $periode_sebelumnya = '12-'.($_POST['tahun']-1);
+    $periode_sebelumnya = '12 '.($_POST['tahun']-1);
 }else if ($_POST['bulan'] == '02') {
-    $periode_sebelumnya = '01-'.($_POST['tahun']);
+    $periode_sebelumnya = '01 '.($_POST['tahun']);
 }else if ($_POST['bulan'] == '03') {
-    $periode_sebelumnya = '02-'.($_POST['tahun']);
+    $periode_sebelumnya = '02 '.($_POST['tahun']);
 }else if ($_POST['bulan'] == '04') {
-    $periode_sebelumnya = '03-'.($_POST['tahun']);
+    $periode_sebelumnya = '03 '.($_POST['tahun']);
 }else if ($_POST['bulan'] == '05') {
-    $periode_sebelumnya = '04-'.($_POST['tahun']);
+    $periode_sebelumnya = '04 '.($_POST['tahun']);
 }else if ($_POST['bulan'] == '06') {
-    $periode_sebelumnya = '05-'.($_POST['tahun']);
+    $periode_sebelumnya = '05 '.($_POST['tahun']);
 }else if ($_POST['bulan'] == '07') {
-    $periode_sebelumnya = '06-'.($_POST['tahun']);
+    $periode_sebelumnya = '06 '.($_POST['tahun']);
 }else if ($_POST['bulan'] == '08') {
-    $periode_sebelumnya = '07-'.($_POST['tahun']);
+    $periode_sebelumnya = '07 '.($_POST['tahun']);
 }else if ($_POST['bulan'] == '09') {
-    $periode_sebelumnya = '08-'.($_POST['tahun']);
+    $periode_sebelumnya = '08 '.($_POST['tahun']);
 }else if ($_POST['bulan'] == '10') {
-    $periode_sebelumnya = '09-'.($_POST['tahun']);
+    $periode_sebelumnya = '09 '.($_POST['tahun']);
 }else if ($_POST['bulan'] == '11') {
-    $periode_sebelumnya = '10-'.($_POST['tahun']);
+    $periode_sebelumnya = '10 '.($_POST['tahun']);
 }else if ($_POST['bulan'] == '12') {
-    $periode_sebelumnya = '11-'.($_POST['tahun']);
+    $periode_sebelumnya = '11 '.($_POST['tahun']);
 }
 
 $sql = "SELECT

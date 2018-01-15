@@ -89,10 +89,11 @@
 
                                                       if ($id_produk[$i] != $id_produk[$i-1]) {
                                                           echo '<option value = "' . $row['nama_produk'] . '">' . $row['nama_produk'] .' ( Penjualan terakhir : ' . $row['nama_periode']. ' )</option>';
+                                                          $jsArray2 .= "produkTotal['" . $row['nama_produk'] . "'] = '" . addslashes($row['jumlah']) . "';";
                                                       }
 
                                                       $jsArray .= "produkName['" . $row['nama_produk'] . "'] = '" . addslashes($row['id_produk']) . "';";
-                                                      $jsArray2 .= "produkTotal['" . $row['nama_produk'] . "'] = '" . addslashes($row['jumlah']) . "';";
+
                                                       $i++;
                                                   }
                                                   ?>
