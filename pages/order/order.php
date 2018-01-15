@@ -17,14 +17,14 @@
 <?php
 $fn = 'convert_to_rupiah';
 function convert_to_rupiah($angka)
-    {return 'Rp. '.strrev(implode('.',str_split(strrev(strval($angka)),3)));}; // Setting Untuk Fungsi Rupiah 
+    {return 'Rp. '.strrev(implode('.',str_split(strrev(strval($angka)),3)));}; // Setting Untuk Fungsi Rupiah
 ?>
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>BUAT ORDER</h2> 
+                <h2>BUAT ORDER</h2>
             </div>
-            
+
             <!-- Input -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -113,7 +113,7 @@ function convert_to_rupiah($angka)
                                             <i class="material-icons">layers</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="text" name="qty" class="form-control text-center" data-rule="quantity" readonly>
+                                            <input type="text" name="qty" class="form-control text-center" data-rule="quantity">
                                         </div>
                                         <span class="input-group-addon">
                                             <a href="javascript:;" class="spin-up" data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i></a>
@@ -129,7 +129,7 @@ function convert_to_rupiah($angka)
                                 </button> -->
                                  </div>
                                  <div class="col-sm-3">
-                                    
+
                                     <div class="input-group hidden">
                                         <span class="input-group-addon">
                                             <i class="material-icons">person</i>
@@ -137,7 +137,7 @@ function convert_to_rupiah($angka)
                                            <select name="nama_pelanggan" class="form-control show-tick" " data-live-search="true">
                                                 <?php
                                                 include '../config/koneksi.php';
-                                                
+
                                                 $queryproduk = mysqli_query($konek, "SELECT nama_pelanggan FROM cart GROUP BY nama_pelanggan DESC LIMIT 1");
                                                 if($queryproduk == false){
                                                     die ("Terdapat Kesalahan : ". mysqli_error($konek));
@@ -155,7 +155,7 @@ function convert_to_rupiah($angka)
                                            <select name="no_invoice" class="form-control show-tick" " data-live-search="true">
                                                 <?php
                                                 include '../config/koneksi.php';
-                                                
+
                                                 $queryproduk = mysqli_query($konek, "SELECT no_invoice FROM cart GROUP BY no_invoice DESC LIMIT 1");
                                                 if($queryproduk == false){
                                                     die ("Terdapat Kesalahan : ". mysqli_error($konek));
@@ -176,8 +176,8 @@ function convert_to_rupiah($angka)
                             </div>
                             <?php
                                                 include '../config/koneksi.php';
-                                                
-                                                $queryproduk = mysqli_query($konek, "SELECT * FROM cart GROUP BY nama_pelanggan DESC LIMIT 1");
+
+                                                $queryproduk = mysqli_query($konek, "SELECT nama_pelanggan FROM cart GROUP BY nama_pelanggan DESC LIMIT 1");
                                                 if($queryproduk == false){
                                                     die ("Terdapat Kesalahan : ". mysqli_error($konek));
                                                 }
@@ -187,9 +187,9 @@ function convert_to_rupiah($angka)
                             ?>
                             <table class="table dataTable">
                               <?php
-                           
+
                                 include 'table_cart.php';
-                            
+
                               ?>
                           </table>
                         </div>
@@ -199,5 +199,3 @@ function convert_to_rupiah($angka)
             <!-- #END# Input -->
         </div>
     </section>
-
-    

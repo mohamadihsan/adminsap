@@ -17,9 +17,9 @@
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>BUAT ORDER</h2> 
+                <h2>BUAT ORDER</h2>
             </div>
-            
+
             <!-- Advanced Form Example With Validation -->
             <!--<div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -52,7 +52,7 @@
                                            <select name="nama_pelanggan" class="form-control show-tick" " data-live-search="true">
                                                 <?php
                                                 include '../config/koneksi.php';
-                                                
+
                                                 $queryproduk = mysqli_query($konek, "SELECT * FROM pelanggan WHERE status = 'Aktif'");
                                                 if($queryproduk == false){
                                                     die ("Terdapat Kesalahan : ". mysqli_error($konek));
@@ -77,7 +77,7 @@
                 </div>
             </div>-->
             <!-- #END# Advanced Form Example With Validation -->
-            
+
             <!-- Input -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -112,7 +112,7 @@
                                            <select name="nama_pelanggan" class="form-control show-tick" " data-live-search="true">
                                                 <?php
                                                 include '../config/koneksi.php';
-                                                
+
                                                 $queryproduk = mysqli_query($konek, "SELECT * FROM pelanggan WHERE status = 'Aktif'");
                                                 if($queryproduk == false){
                                                     die ("Terdapat Kesalahan : ". mysqli_error($konek));
@@ -144,4 +144,3 @@
             <!-- #END# Input -->
         </div>
     </section>
-    
