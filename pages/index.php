@@ -71,6 +71,9 @@
       }else if (isset($_GET['bahan_baku'])){
          include "../pages/bahan_baku/index.php";
 
+     }else if (isset($_GET['kendaraan'])){
+         include "../pages/kendaraan/index.php";
+
       }else if (isset($_GET['retur'])){
          include "../pages/retur_produk/index.php";
 
@@ -133,6 +136,11 @@
          include "pelanggan/add.php";
       }else if (isset($_GET['id_pelanggan'])){
          include "pelanggan/edit.php";
+
+     }else if (isset($_GET['tambah_kendaraan'])){
+         include "kendaraan/add.php";
+     }else if (isset($_GET['id_kendaraan'])){
+         include "kendaraan/edit.php";
 
       }else if (isset($_GET['tambah-produk'])){
          include "produk/add.php";

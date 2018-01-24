@@ -10,13 +10,44 @@
                             <span>Home</span>
                         </a>
                     </li>
+
                     <li>
-                        <a href="index.php?pelanggan">
-                            <i class="material-icons">person</i>
-                            <span>Pelanggan</span>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">chrome_reader_mode</i>
+                            <span>Data Master</span>
                         </a>
+                        <ul class="ml-menu">
+                            <!-- <li>
+                                <a href="index.php?bahan_baku">
+                                    <i class="material-icons">description</i>
+                                    <span>Bahan Baku</span>
+                                </a>
+                            </li> -->
+
+                            <li>
+                                <a href="index.php?kendaraan">
+                                    <i class="material-icons">local_shipping</i>
+                                    <span>Kendaraan</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="index.php?pelanggan">
+                                    <i class="material-icons">person</i>
+                                    <span>Pelanggan</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="index.php?produk">
+                                    <i class="material-icons">description</i>
+                                    <span>Produk</span>
+                                </a>
+                            </li>
+
+                        </ul>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">assignment_return</i>
                             <span>Pengeluaran</span>
@@ -35,7 +66,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="index.php?pemesanan_produk">
                             <i class="material-icons">shopping_cart</i>
