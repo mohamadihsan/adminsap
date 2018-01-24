@@ -1,7 +1,7 @@
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>PELANGGAN</h2> 
+                <h2>RETUR</h2>
             </div>
          <!-- Input -->
             <div class="row clearfix">
@@ -9,8 +9,8 @@
                     <div class="card-add">
                         <div class="header">
                             <h2>
-                                INPUT PELANGGAN
-                                <small>Data kelengkapan pelanggan</small>
+                                INPUT RETUR
+                                <small>Data kelengkapan retur</small>
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -27,14 +27,14 @@
                         </div>
                         <div class="body">
                             <div class="row clearfix">
-                              <form action="../controller/pelanggan/add.php" id="sign_in" method="POST">
+                              <form action="../controller/retur/add.php" id="sign_in" method="POST">
                                 <div class="col-sm-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                             <i class="material-icons">person</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="text" name="nama_pelanggan" class="form-control" placeholder="Nama Pelanggan" required>
+                                            <input type="text" name="nama_retur" class="form-control" placeholder="Nama Pelanggan" required>
                                         </div>
                                     </div>
                                 </div>
@@ -89,8 +89,8 @@
                                     </div>
                                 </div>
 		                        <div class="col-md-12">
-		                            <button id="add_pelanggan" class="btn btn-lg bg-gradient waves-effect" type="submit">TAMBAH</button>
-		                            <a href="index.php?pelanggan" class="btn btn-lg bg-gradient-red waves-effect">BATAL</a>
+		                            <button id="add_retur" class="btn btn-lg bg-gradient waves-effect" type="submit">TAMBAH</button>
+		                            <a href="index.php?retur" class="btn btn-lg bg-gradient-red waves-effect">BATAL</a>
 		                        </div>
                               </form>
                             </div>
@@ -101,4 +101,3 @@
             <!-- #END# Input -->
         </div>
     </section>
-    

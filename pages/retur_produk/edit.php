@@ -1,4 +1,4 @@
-<?php 
+<?php
 include '../config/koneksi.php';
 
 $id_pelanggan  = $_GET["id_pelanggan"];
@@ -13,7 +13,7 @@ while($pelanggan = mysqli_fetch_array($querypelanggan)){
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>PELANGGAN</h2> 
+                <h2>RETUR</h2>
             </div>
          <!-- Input -->
             <div class="row clearfix">
@@ -21,7 +21,7 @@ while($pelanggan = mysqli_fetch_array($querypelanggan)){
                     <div class="card-add">
                         <div class="header">
                             <h2>
-                                Edit PELANGGAN
+                                Edit RETUR
                                 <small>Edit data kelengkapan pelanggan</small>
                             </h2>
                             <ul class="header-dropdown m-r--5">
@@ -111,8 +111,8 @@ while($pelanggan = mysqli_fetch_array($querypelanggan)){
                                     </div>
                                 </div>
 		                        <div class="col-md-12">
-		                            <button id="edit_pelanggan" class="btn btn-lg bg-gradient waves-effect" type="submit">EDIT</button>
-		                            <a href="index.php?pelanggan" class="btn btn-lg bg-gradient-red waves-effect">BATAL</a>
+		                            <button id="edit_retur" class="btn btn-lg bg-gradient waves-effect" type="submit">EDIT</button>
+		                            <a href="index.php?retur" class="btn btn-lg bg-gradient-red waves-effect">BATAL</a>
 		                        </div>
                               </form>
                             </div>
@@ -126,4 +126,3 @@ while($pelanggan = mysqli_fetch_array($querypelanggan)){
     <?php
       }
     ?>
-    
