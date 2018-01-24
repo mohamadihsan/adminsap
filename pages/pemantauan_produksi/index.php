@@ -1,7 +1,7 @@
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>PEMANTAUAN PRODUKSI</h2> 
+                <h2>PEMANTAUAN PRODUKSI</h2>
             </div>
 
             <!-- Widgets -->
@@ -58,7 +58,7 @@
                     <div class="card-table">
                         <div class="header">
                             <div class="row clearfix">
-                               <a href="index.php?tambah-pemantauan"><button type="button" class="btn bg-gradient btn-circle waves-effect waves-circle waves-float" style="margin-left: 10px;">
+                               <a href="index.php?tambah_pemantauan"><button type="button" class="btn bg-gradient btn-circle waves-effect waves-circle waves-float" style="margin-left: 10px;">
                                     <i class="material-icons">add</i>
                                 </button></a>
                             </div>
@@ -78,9 +78,9 @@
                         <div class="body">
                           <table class="table table-hover dataTable js-exportable">
                            <?php
-                           
+
 								include 'table_pemantauan.php';
-                           	
+
                            ?>
 						  </table>
                         </div>
@@ -90,4 +90,31 @@
             <!-- #END# CPU Usage -->
         </div>
     </section>
-    
+
+    <div class="modal fade" id="update" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-trash"></i> Hapus Data</h4>
+                </div>
+                <form method="post" action="../controller/pemantauan_produksi/edit.php" class="myform">
+                    <div class="modal-body">
+                        <input type="hidden" name="id_monitoring_produksi"  readonly>
+                        <input type="hidden" name="status_produksi" readonly>
+                        <p>Apakah anda akan mengubah status data ini?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-sm btn-primary"> Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function update(status_produksi, id_monitoring_produksi){
+        $('.modal-body input[name=status_produksi]').val(status_produksi);
+        $('.modal-body input[name=id_monitoring_produksi]').val(id_monitoring_produksi);
+    }
+    </script>

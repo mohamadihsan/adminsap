@@ -80,7 +80,7 @@
     }else if (isset($_GET['komposisi_produk'])){
          include "../pages/komposisi_produk/index.php";
 
-      }else if (isset($_GET['pemantauan-produksi'])){
+     }else if (isset($_GET['pemantauan_produksi'])){
          include "../pages/pemantauan_produksi/index.php";
 
       }else if (isset($_GET['produk'])){
@@ -146,11 +146,15 @@
 
      }else if (isset($_GET['detail_komposisi_produk'])){
          include "komposisi_produk/detail.php";
-      }else if (isset($_GET['tambah-pemantauan'])){
+     }else if (isset($_GET['tambah_pemantauan'])){
          include "pemantauan_produksi/add.php";
       }else if (isset($_GET['id_monitoring_produksi'])){
          include "pemantauan_produksi/edit.php";
-
+         // header('location:index.php?pemantauan_produksi');
+         // $id = $_GET['id_monitoring_produksi'];
+         // $status = $_GET['status_produksi'];
+         // header('location:../controller/pemantauan_produksi/edit.php?id_monitoring_produksi='.$id.'&status_produksi='.$status);
+         header('location:../controller/pemantauan_produksi/edit.php?id_monitoring_produksi="'.$id.'"&status_produksi="'.$status.'"');
       }else if (isset($_GET['tambah-supplier'])){
          include "supplier/add.php";
       }else if (isset($_GET['id_supplier'])){

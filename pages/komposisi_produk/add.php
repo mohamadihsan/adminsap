@@ -14,7 +14,7 @@
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>KOMPOSISI PRODUK</h2> 
+                <h2>KOMPOSISI PRODUK</h2>
             </div>
          <!-- Input -->
             <div class="row clearfix">
@@ -43,12 +43,12 @@
                               <form action="../controller/komposisi_produk/add.php" id="sign_in" method="POST">
                                <div id="addMoreAgain">
                                 <div id="addMore">
-                                 <div class="col-sm-3">
-                                            <select name="id_produk" class="form-control show-tick" " data-live-search="true">
-                                                <?php
+                                    <div class="col-sm-3">
+                                        <select name="id_produk" class="form-control show-tick" data-live-search="true">
+                                            <?php
                                                 include '../config/koneksi.php';
-                                                
-                                                $queryproduk = mysqli_query($konek, "SELECT * FROM produk WHERE id_jenis = 1 AND status_komposisi = ''");
+
+                                                $queryproduk = mysqli_query($konek, "SELECT * FROM produk WHERE status_komposisi = ''");
                                                 if($queryproduk == false){
                                                     die ("Terdapat Kesalahan : ". mysqli_error($konek));
                                                 }
@@ -56,13 +56,13 @@
                                                     echo "<option value='$produk[id_produk]'>$produk[nama_produk]</option>";
                                                 }
                                             ?>
-                                            </select>
-                                </div>
+                                        </select>
+                                    </div>
                                  <div class="col-sm-3">
-                                            <select name="id_bahan_baku" class="form-control show-tick" " data-live-search="true">
+                                            <select name="id_bahan_baku" class="form-control show-tick" data-live-search="true">
                                                 <?php
                                                 include '../config/koneksi.php';
-                                                
+
                                                 $querybahanbaku = mysqli_query($konek, "SELECT * FROM bahan_baku WHERE stock > 0");
                                                 if($querybahanbaku == false){
                                                     die ("Terdapat Kesalahan : ". mysqli_error($konek));
@@ -93,17 +93,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="btn bg-gradient btn-circle waves-effect waves-circle waves-float" style="margin-left: 10px;" id="add">
+                                <!-- <button type="button" class="btn bg-gradient btn-circle waves-effect waves-circle waves-float" style="margin-left: 10px;" id="add">
                                 <i class="material-icons">add</i>
                                 </button>
                                 <button type="button" class="btn bg-gradient-red btn-circle waves-effect waves-circle waves-float" style="margin-left: 10px;" id="min">
                                 <i class="material-icons">clear</i>
-                                </button>
+                                </button> -->
                                </div>
                                </div>
                                <div class="col-md-12">
                                     <button id="add_komposisi" class="btn btn-lg bg-gradient waves-effect" type="submit">TAMBAH</button>
-                                    <a href="index.php?komposisi-produk" class="btn btn-lg bg-gradient-red waves-effect" id="back">BATAL</a>
+                                    <a href="index.php?komposisi_produk" class="btn btn-lg bg-gradient-red waves-effect" id="back">BATAL</a>
                               </div>
                               </form>
                             </div>
@@ -114,4 +114,3 @@
             <!-- #END# Input -->
         </div>
     </section>
-    

@@ -112,7 +112,7 @@
                         ?>
                         <div class="header">
                             <div class="row clearfix">
-                               <a href="index.php?tambah_komposisi" title="Tambah Data"><button type="button" class="btn bg-gradient btn-circle waves-effect waves-circle waves-float" style="margin-left: 10px;">
+                               <a href="index.php?tambah_komposisi_produk" title="Tambah Data"><button type="button" class="btn bg-gradient btn-circle waves-effect waves-circle waves-float" style="margin-left: 10px;">
                                     <i class="material-icons">add</i>
                                 </button></a>
                             </div>

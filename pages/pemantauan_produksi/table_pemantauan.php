@@ -1,4 +1,4 @@
- 
+
                 <thead>
 					<tr>
 						<th>Tanggal Produksi</th>
@@ -15,31 +15,40 @@
 						}
 
 						while ($spl = mysqli_fetch_array ($queryspl)){
-
-							echo "
+                            $id = $spl['id_monitoring_produksi'];
+                            ?>
 								<tr>
-									<td>$spl[hari] $spl[bulan] $spl[tahun]</td>
-									<td>$spl[id_order_produk]</td>";
-									if ($spl['status_produksi'] == 'BELUM PRODUKSI'){
-							          echo " <td><a href='index.php?tambah-komposisi'><button class='btn-status bg-gradient-red waves-effect'>MENUNGGU</button></a></td>";
-									}else{
-									  echo " <td><button class='btn-status bg-gradient-green waves-effect'>SUDAH PRODUKSI</button></td>";
-									};
-
-							echo "
+									<td><?= $spl['hari'].' '.$spl['bulan'].' '.$spl['tahun'] ?></td>
+									<td><?= $spl['id_order_produk'] ?></td>
+                                    <?php
+                                    if ($spl['status_produksi'] == 'BELUM PRODUKSI' OR $spl['status_produksi']=='Menunggu'){
+							          ?>
+                                      <td><a href='index.php?tambah-komposisi'><button class='btn-status bg-gradient-red waves-effect'>MENUNGGU</button></a></td>
+                                      <?php
+                                  }else if($spl['status_produksi']=='SELESAI'){
+                                        ?>
+									  <td><button class='btn-status bg-gradient-green waves-effect'>SUDAH PRODUKSI</button></td>
+                                      <?php
+                                  }else{
+                                      ?>
+                                      <td><button class='btn-status bg-gradient-blue waves-effect'>SEDANG PRODUKSI</button></td>
+                                        <?php
+                                  }
+                                    ?>
 									<td>
 									<div class='btn-group'>
                                     <button type='button' class='btn-status bg-gradient dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                                         STATUS <span class='caret'></span>
                                     </button>
                                     <ul class='dropdown-menu'>
-                                        <li><a href='index.php?id_monitoring_produksi=$spl[id_monitoring_produksi]'><i class='material-icons'>done</i> SEDANG</a></li>
+                                        <li><a data-toggle="modal" data-target="#update" onclick="return update('SEDANG','<?= $id ?>')"><i class='material-icons'>done</i> SEDANG</a></li>
                                         <li role='separator' class='divider'></li>
-                                        <li><a href='javascript:void(0);'><i class='material-icons'>done_all</i> SELESAI</a></li>
+                                        <li><a data-toggle="modal" data-target="#update" onclick="return update('SELESAI','<?= $id ?>')"><i class='material-icons'>done_all</i> SELESAI</a></li>
                                     </ul>
                                     </div>
 									</td>
-								</tr>";
+								</tr>
+                                <?php
 						}
 					?>
 				</tbody>

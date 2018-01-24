@@ -1,16 +1,15 @@
 <?php
 include "../../config/koneksi.php";
 
-$id_produk				           = $_POST["id_produk"];
-$id_bahan_baku				       = $_POST["id_bahan_baku"];
-$komposisi				           = $_POST["komposisi"];
-$status				               = $_POST["status"];
+$tanggal_produksi				           = $_POST["tanggal_produksi"];
+$id_order_produk				       = $_POST["id_order_produk"];
+$status_produksi				           = $_POST["status_produksi"];
 
+$tanggal_produksi =  date('Y-m-d', strtotime($tanggal_produksi));
 
-
-if ($add = mysqli_query($konek, "INSERT INTO komposisi_produk (id_produk, id_bahan_baku, komposisi, status) VALUES
-	('$id_produk','$id_bahan_baku','$koposisi','$status')")){
-		header("Location: ../../pages/index.php?komposisi-produk");
+if ($add = mysqli_query($konek, "INSERT INTO monitoring_produksi (tanggal_produksi, id_order_produk, status_produksi) VALUES
+	('$tanggal_produksi','$id_order_produk','$status_produksi')")){
+		header("Location: ../../pages/index.php?pemantauan_produksi");
 		exit();
 	}
 die ("Terdapat kesalahan : ". mysqli_error($konek));

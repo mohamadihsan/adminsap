@@ -14,7 +14,7 @@
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>PEMANTAUAN PRODUK</h2> 
+                <h2>PEMANTAUAN PRODUK</h2>
             </div>
          <!-- Input -->
             <div class="row clearfix">
@@ -40,12 +40,12 @@
                         </div>
                         <div class="body">
                             <div class="row clearfix">
-                              <form action="../controller/komposisi_produk/add.php" id="sign_in" method="POST">
+                              <form action="../controller/pemantauan_produksi/add.php" id="sign_in" method="POST">
                                 <div class="col-sm-3">
-                                            <select name="id_order_produk" class="form-control show-tick" " data-live-search="true">
+                                            <select name="id_order_produk" class="form-control show-tick" data-live-search="true">
                                                 <?php
                                                 include '../config/koneksi.php';
-                                                
+
                                                 $querybahanbaku = mysqli_query($konek, "SELECT * FROM bahan_baku");
                                                 if($querybahanbaku == false){
                                                     die ("Terdapat Kesalahan : ". mysqli_error($konek));
@@ -69,7 +69,7 @@
                                  <div class="col-sm-4">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="datepicker form-control" placeholder="Tambahkan Tanggal...">
+                                            <input type="text" class="datepicker form-control" name="tanggal_produksi" placeholder="Tambahkan Tanggal...">
                                         </div>
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@
                                 </div>
 		                        <div class="col-md-12">
 		                            <button id="add_pemantauan" class="btn btn-lg bg-gradient waves-effect" type="submit">TAMBAH</button>
-		                            <a href="index.php?pemantauan-produksi" class="btn btn-lg bg-gradient-red waves-effect">BATAL</a>
+		                            <a href="index.php?pemantauan_produksi" class="btn btn-lg bg-gradient-red waves-effect">BATAL</a>
 		                        </div>
                               </form>
                             </div>
@@ -100,4 +100,3 @@
             <!-- #END# Input -->
         </div>
     </section>
-    

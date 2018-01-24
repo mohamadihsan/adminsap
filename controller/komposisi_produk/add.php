@@ -22,6 +22,6 @@ $add_aliran = mysqli_query($konek, "INSERT INTO aliran_bahan_baku_dan_produk (id
 
 $add = mysqli_query($konek, "INSERT INTO komposisi_produk (id_produk, id_bahan_baku, komposisi, status) VALUES
 	('$id_produk','$id_bahan_baku','$komposisi','SUDAH DIBUAT')") or die(mysqli_error($konek));
-header("location: ../../pages/index.php?komposisi-produk");
+header("location: ../../pages/index.php?komposisi_produk");
 
 ?>
