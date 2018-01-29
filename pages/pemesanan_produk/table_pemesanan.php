@@ -36,10 +36,10 @@ function convert_to_rupiah($angka)
 									<td>{$fn($spl["total_pembayaran"])}</td>";
 
 									if ($spl['status_order'] == '' ){
-							          echo " <td><a href='index.php?no_invoice=$spl[no_invoice]'><button class='btn-status bg-grey waves-effect'>RINCIAN</button></a>
+							          echo " <td><a href='index.php?pemesanan_produk=true&no_invoice=$spl[no_invoice]'><button class='btn-status bg-grey waves-effect'>RINCIAN</button></a>
 							              <a href='../controller/order/confirm_bayar.php?id_order_penjualan=$spl[id_order_penjualan]' class='lanjut-link'><button class='btn-status bg-gradient-blue waves-effect'>KONFIRM</button></a></td>";
 									}else{
-									  echo" <td><a href='index.php?id_order_penjualan=$spl[id_order_penjualan]'><button class='btn-status bg-grey waves-effect'>RINCIAN</button></a>
+									  echo" <td><a href='index.php?pemesanan_produk=true&id_order_penjualan=$spl[id_order_penjualan]'><button class='btn-status bg-grey waves-effect'>RINCIAN</button></a>
 										    <a href='#'><button class='btn-status bg-gradient-green waves-effect'>LUNAS</button></a></td>";
 									};
 
@@ -49,3 +49,34 @@ function convert_to_rupiah($angka)
 					?>
 				</tbody>
                             </table>
+                            <?php
+                            if (isset($_GET['id_order_penjualan'])) {
+                                $id = $_GET['id_order_penjualan'];
+                                ?>
+                                <table class="table table-responsive">
+                                    <caption><b><h2>RINCIAN</h2></b></caption>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Produk</th>
+                                        <th>Qty</th>
+                                        <th>Harga</th>
+                                    </tr>
+                                    <?php
+                                    $sql = "SELECT nama_produk, qty, harga FROM order_penjualan_detail WHERE id_order_penjualan='$id'";
+                                    $result = mysqli_query($konek, $sql);
+                                    $no=1;
+                                    while ($row=mysqli_fetch_assoc($result)) {
+                                        ?>
+                                        <tr>
+                                            <td><?= $no++ ?></td>
+                                            <td><?= $row['nama_produk'] ?></td>
+                                            <td><?= $row['qty'] ?></td>
+                                            <td><?= $row['harga'] ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+                                </table>
+                                <?php
+                            }
+                            ?>
