@@ -47,13 +47,75 @@ try {
 
 	// $details=mysqli_query($konek, "INSERT INTO order_penjualan_detail (id_order_penjualan, nama_pelanggan, no_invoice, nama_produk, qty, harga) select nama_pelanggan, no_invoice, id_produk, qty, harga from cart");
 	if($details=mysqli_query($konek, "INSERT INTO order_penjualan_detail (id_order_penjualan, nama_produk, qty, harga) VALUES ('$id_order_penjualan','$nama_produk', '$qty', '$harga')")){ }else{ die ("Terdapat kesalahan3 : ". mysqli_error($konek)); }
-
+	$total_berat = 0;
+	$x = 0;
 	$stok=mysqli_query($konek, "select cart.id_produk, produk.nama_produk, cart.qty, produk.stok from produk inner join cart on cart.id_produk = produk.id_produk");
 	while($data=mysqli_fetch_array($stok)){
 		$sisa=$data['stok']-$data['qty'];
 		$id_produk = $data['id_produk'];
-		if(mysqli_query($konek, "update produk set stok='$sisa' where produk.id_produk = '$id_produk'")){ }else{ die ("Terdapat kesalahan4 : ". mysqli_error($konek)); }
+		if(mysqli_query($konek, "update produk set stok='$sisa' where produk.id_produk = '$id_produk'")){
+            // total berat pemesanan
+			$total_berat = $total_berat + $data['qty'];
+            // cek apakah ada stok kosong
+			if ($data['stok'] < $data['qty']) {
+				$x++;
+			}
+
+		}else{ die ("Terdapat kesalahan4 : ". mysqli_error($konek)); }
 	}
+
+	// PENENTUAN TANGGAL PENGIRIMAN
+	// insert tanggal pengiriman jika stok tersedia
+	$tanggal_sekarang = date('Y-m-d H:i:s');
+	if ($x < 0) {
+		// stok tersedia dan siap dikirim
+		$tanggal_kirim = date('Y-m-d', strtotime('+1 days', strtotime($tanggal_sekarang)));
+	}else{
+		// melewati proses produksi terlebih dahulu
+		$jumlah_pemesanan = $total_berat;
+		$lama_produksi = ceil(($jumlah_pemesanan / 96) * 8); // 96 == 96 liter/hari dan 8 == 8 jam produksi/hari
+		$date = date_create($tanggal_sekarang);
+		date_add($date, date_interval_create_from_date_string($lama_produksi.' hours'));
+		$tanggal_selesai_produksi = DATE_FORMAT($date, 'Y-m-d H:i:s');
+		$jam_selesai_produksi = DATE_FORMAT($date, 'H');
+		if ($jam_selesai_produksi > 14) {
+			$tanggal_kirim = date('Y-m-d', strtotime('+1 days', strtotime($tanggal_selesai_produksi)));
+		}else{
+			$tanggal_kirim = $tanggal_selesai_produksi;
+		}
+	}
+
+	// PENENTUAN JENIS KENDARAAN
+	// motor = 40kg, mpbil box = 7000 kg, mobil kap = 3500 kg
+	if ($total_berat <= 80) {
+		$jenis_kendaraan = 'motor';
+		$sql = "SELECT no_polisi, id_user FROM kendaraan ORDER BY id_kendaraan ASC LIMIT 1";
+		$result = mysqli_query($konek, $sql);
+		$row=mysqli_fetch_assoc($result);
+		$no_polisi = $row['no_polisi'];
+		$id_user = $row['id_user'];
+	}else if ($total_berat > 80 && $total_berat <= 3500) {
+		$jenis_kendaraan = 'mobil bak terbuka';
+		$sql = "SELECT no_polisi, id_user FROM kendaraan ORDER BY id_kendaraan DESC LIMIT 1";
+		$result = mysqli_query($konek, $sql);
+		$row=mysqli_fetch_assoc($result);
+		$no_polisi = $row['no_polisi'];
+		$id_user = $row['id_user'];
+	}else{
+		$jenis_kendaraan = 'mobil box';
+		$sql = "SELECT no_polisi, id_user FROM kendaraan ORDER BY id_kendaraan DESC LIMIT 1";
+		$result = mysqli_query($konek, $sql);
+		$row=mysqli_fetch_assoc($result);
+		$no_polisi = $row['no_polisi'];
+		$id_user = $row['id_user'];
+	}
+
+	$kapasitas = $total_berat;
+
+	// insert ke table pengiriman
+	$sql = "INSERT INTO pengiriman(id_order_penjualan, tanggal_kirim, id_user, jenis_kendaraan, no_polisi, kapasitas)
+			VALUES('$id_order_penjualan', '$tanggal_kirim', '$id_user', '$jenis_kendaraan', '$no_polisi', '$kapasitas')";
+	mysqli_query($konek, $sql);
 
 	$sql = "SELECT
 				cart.id_produk,

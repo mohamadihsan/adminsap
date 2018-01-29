@@ -29,22 +29,12 @@
                             <div class="row clearfix">
                               <form action="../controller/retur/add.php" id="sign_in" method="POST">
                                 <div class="col-sm-6">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">person</i>
-                                        </span>
-                                        <div class="form-line">
-                                            <input type="text" name="nama_retur" class="form-control" placeholder="Nama Pelanggan" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
                                      <div class="input-group">
                                         <span class="input-group-addon">
                                             <i class="material-icons">home</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="text" name="alamat" class="form-control" placeholder="Alamat" required>
+                                            <input type="text" name="alasan_retur" class="form-control" placeholder="Alasan Retur" required>
                                         </div>
                                     </div>
                                 </div>
@@ -54,37 +44,45 @@
                                             <i class="material-icons">email</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="text" name="email" class="form-control email" placeholder="Email" required>
+                                            <input type="text" name="status_produk" class="form-control" placeholder="Status Produk" required>
                                         </div>
                                     </div>
                                 </div>
+
+                                  <div class="col-sm-6">
+                                      <div class="input-group">
+                                          <span class="input-group-addon">
+                                              <i class="material-icons">person</i>
+                                          </span>
+                                          <div class="form-line">
+                                              <select class="form-control" name="id_order_penjualan">
+                                                  <?php
+                                                  $sql = "SELECT id_order_penjualan, no_invoice FROM order_penjualan";
+                                                  $result = mysqli_query($konek, $sql);
+                                                  if (mysqli_num_rows($result) > 0) {
+                                                      while ($row = mysqli_fetch_assoc($result)) {
+                                                          ?>
+                                                          <option value="<?= $row['id_order_penjualan'] ?>"><?= $row['no_invoice'] ?></option>
+                                                          <?php
+                                                      }
+                                                  }else{
+                                                      ?>
+                                                      <option>Data tidak ditemukan</option>
+                                                      <?php
+                                                  }
+
+                                                  ?>
+                                              </select>
+                                          </div>
+                                      </div>
+                                  </div>
                                 <div class="col-sm-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                             <i class="material-icons">phone_iphone</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="text" name="telepon" class="form-control" placeholder="Telepon" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">attach_money</i>
-                                        </span>
-                                        <div class="form-line">
-                                            <input type="text" name="kredit_limit" class="form-control" placeholder="Kredit Limit" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 hidden">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">person</i>
-                                        </span>
-                                        <div class="form-line">
-                                            <input type="text" name="id_user" class="form-control" placeholder="id_user" value="<?php echo "".$_SESSION["id_user"]."" ?>">
+                                            <input type="number" name="qty" class="form-control" placeholder="Quantity Retur" required>
                                         </div>
                                     </div>
                                 </div>

@@ -55,10 +55,17 @@
 						};
 
 
+                        // if($_SESSION["hak_akses"] == 'sales admin'){
+                        //     echo "
+    					// 	<td>
+    					// 		<a href='index.php?id_retur=$spl[id_retur]'><button type='button' class='btn bg-gradient btn-circle-table waves-effect waves-circle waves-float';><i class='material-icons'>create</i></button></a>
+    					// 		<a data-toggle='modal' data-target='#hapus' onclick='return hapus(\"".$spl['id_retur']."\")'  class='delete-link'><button type='button' class='btn bg-gradient-red btn-circle-table waves-effect waves-circle waves-float' title='Hapus'><i class='material-icons'>delete</i></button></a
+                        //     </td>";
+                        // }
+
                         if($_SESSION["hak_akses"] == 'sales admin'){
                             echo "
     						<td>
-    							<a href='index.php?id_retur=$spl[id_retur]'><button type='button' class='btn bg-gradient btn-circle-table waves-effect waves-circle waves-float';><i class='material-icons'>create</i></button></a>
     							<a data-toggle='modal' data-target='#hapus' onclick='return hapus(\"".$spl['id_retur']."\")'  class='delete-link'><button type='button' class='btn bg-gradient-red btn-circle-table waves-effect waves-circle waves-float' title='Hapus'><i class='material-icons'>delete</i></button></a
                             </td>";
                         }

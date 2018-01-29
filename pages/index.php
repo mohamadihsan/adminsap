@@ -68,7 +68,10 @@
        }else if (isset($_GET['pemesanan_produk'])){
          include "../pages/pemesanan_produk/index.php";
 
-      }else if (isset($_GET['bahan_baku'])){
+     }else if (isset($_GET['pengiriman_produk'])){
+        include "../pages/pengiriman_produk/index.php";
+
+     }else if (isset($_GET['bahan_baku'])){
          include "../pages/bahan_baku/index.php";
 
      }else if (isset($_GET['kendaraan'])){

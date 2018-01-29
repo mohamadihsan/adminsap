@@ -3,7 +3,6 @@
 					<tr>
 						<th>No Invoice</th>
 						<th>Tgl Order</th>
-						<th>Tgl Pengiriman</th>
 						<th>Status</th>
 						<th>Total Pembayaran</th>
 						<th>Action</th>
@@ -26,8 +25,7 @@ function convert_to_rupiah($angka)
 							echo "
 								<tr>
 									<td>$spl[no_invoice]</td>
-									<td>$spl[Hari] $spl[Bulan] $spl[Tahun]</td>
-									<td>$spl[kirim]</td>";
+									<td>$spl[Hari] $spl[Bulan] $spl[Tahun]</td>";
 									if ($spl['status_order'] == 'MENUNGGU PEMBAYARAN' ){
 							          echo " <td><button class='btn-status bg-gradient-red waves-effect'>BLM BAYAR</button></td>";
 									}else{

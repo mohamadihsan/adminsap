@@ -73,6 +73,13 @@
                             <span>Pemesanan Produk</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="index.php?pengiriman_produk">
+                            <i class="material-icons">local_shipping</i>
+                            <span>Pengiriman Produk</span>
+                        </a>
+                    </li>
                      <li>
                         <a href="index.php?retur">
                             <i class="material-icons">undo</i>
