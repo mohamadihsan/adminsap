@@ -1,4 +1,38 @@
 
+<?php
+if (isset($_GET['id_order_penjualan'])) {
+    $id = $_GET['id_order_penjualan'];
+    ?>
+    <table class="table table-responsive">
+        <caption><b><h2>RINCIAN</h2></b></caption>
+        <tr>
+            <th>No</th>
+            <th>Nama Produk</th>
+            <th>Qty</th>
+            <th>Harga</th>
+        </tr>
+        <?php
+        $sql = "SELECT nama_produk, qty, harga FROM order_penjualan_detail WHERE id_order_penjualan='$id'";
+        $result = mysqli_query($konek, $sql);
+        $no=1;
+        while ($row=mysqli_fetch_assoc($result)) {
+            ?>
+            <tr>
+                <td><?= $no++ ?></td>
+                <td><?= $row['nama_produk'] ?></td>
+                <td><?= $row['qty'] ?></td>
+                <td><?= $row['harga'] ?></td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
+    <?php
+}
+?>
+
+
+  <table class="table table-hover dataTable js-exportable">
                 <thead>
 					<tr>
 						<th>No Invoice</th>
@@ -49,34 +83,3 @@ function convert_to_rupiah($angka)
 					?>
 				</tbody>
                             </table>
-                            <?php
-                            if (isset($_GET['id_order_penjualan'])) {
-                                $id = $_GET['id_order_penjualan'];
-                                ?>
-                                <table class="table table-responsive">
-                                    <caption><b><h2>RINCIAN</h2></b></caption>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Produk</th>
-                                        <th>Qty</th>
-                                        <th>Harga</th>
-                                    </tr>
-                                    <?php
-                                    $sql = "SELECT nama_produk, qty, harga FROM order_penjualan_detail WHERE id_order_penjualan='$id'";
-                                    $result = mysqli_query($konek, $sql);
-                                    $no=1;
-                                    while ($row=mysqli_fetch_assoc($result)) {
-                                        ?>
-                                        <tr>
-                                            <td><?= $no++ ?></td>
-                                            <td><?= $row['nama_produk'] ?></td>
-                                            <td><?= $row['qty'] ?></td>
-                                            <td><?= $row['harga'] ?></td>
-                                        </tr>
-                                        <?php
-                                    }
-                                    ?>
-                                </table>
-                                <?php
-                            }
-                            ?>

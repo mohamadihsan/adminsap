@@ -1,7 +1,7 @@
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>PEMESANAN</h2> 
+                <h2>PEMESANAN</h2>
             </div>
 
             <!-- Widgets -->
@@ -74,13 +74,11 @@
                             </ul>
                         </div>
                         <div class="body">
-                          <table class="table table-hover dataTable js-exportable">
                            <?php
-                           
+
 								include 'table_pemesanan.php';
-                           	
+
                            ?>
-						  </table>
                         </div>
                     </div>
                 </div>
@@ -88,4 +86,3 @@
             <!-- #END# CPU Usage -->
         </div>
     </section>
-    
