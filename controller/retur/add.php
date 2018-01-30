@@ -33,9 +33,11 @@ $nama_produk = $row['nama_produk'];
 
 if ($add = mysqli_query($konek, "INSERT INTO retur (no_invoice, id_order_penjualan, tgl_pesan, tgl_kirim, id_pelanggan, id_produk, status_produk, nama_produk, qty, alasan_retur, status, id_user) VALUES
 	('$no_invoice','$id_order_penjualan','$tgl_pesan','$tgl_kirim', '$id_pelanggan', '$id_produk', '$status_produk', '$nama_produk', '$qty', '$alasan_retur','$status','$id_user')")){
-		header("Location: ../../pages/index.php?retur");
+        $_SESSION['status_operasi'] = 'add success';
+        header("Location: ../../pages/index.php?retur");
 		exit();
 	}
+    $_SESSION['status_operasi'] = 'add failed';
 die ("Terdapat kesalahan : ". mysqli_error($konek));
 
 ?>

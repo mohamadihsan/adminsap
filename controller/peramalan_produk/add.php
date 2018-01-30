@@ -1,5 +1,6 @@
 <?php
 include "../../config/koneksi.php";
+session_start();
 
 $id_produk				       = $_POST["id_produk"];
 $nama_produk				   = $_POST["nama_produk"];
@@ -90,5 +91,6 @@ $sql = "INSERT INTO peramalan(
         		'$persentase_kesalahan'
         	)";
 mysqli_query($konek, $sql)or die(mysqli_error($konek));
+$_SESSION['status_operasi'] = 'add success';
 header("location: ../../pages/index.php?peramalan_produk");
 ?>

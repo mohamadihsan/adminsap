@@ -1,5 +1,6 @@
 <?php
 include "../../config/koneksi.php";
+session_start();
 
 $no_invoice				       = $_POST["no_invoice"];
 $id_pelanggan				   = $_POST["id_pelanggan"];
@@ -43,6 +44,7 @@ $produk=mysqli_query($konek, "select nama_produk from produk where id_produk='$i
 $data=mysqli_fetch_array($produk);
 $nama_produk=$data['nama_produk'];
 mysqli_query($konek, "INSERT INTO order_penjualan_detail(id_order_penjualan, nama_produk, qty, harga) VALUES ('','$nama_produk','$qty','$total_harga')")or die(mysqli_error($konek));
+$_SESSION['status_operasi'] = 'add success';
 header("location: ../../pages/index.php?order-confirm");
 
 }else{
@@ -69,6 +71,7 @@ $produk=mysqli_query($konek, "select nama_produk from produk where id_produk='$i
 $data=mysqli_fetch_array($produk);
 $nama_produk=$data['nama_produk'];
 mysqli_query($konek, "INSERT INTO order_penjualan_detail(id_order_penjualan, nama_produk, qty, harga) VALUES ('','$nama_produk','$qty','$total_harga')")or die(mysqli_error($konek));
+$_SESSION['status_operasi'] = 'add success';
 header("location: ../../pages/index.php?order-confirm");
 
 };

@@ -31,9 +31,10 @@ if ($add = mysqli_query($konek, "INSERT INTO aliran_bahan_baku_dan_produk (id_gu
 			WHERE
 				id_bahan_baku = '$id_bahan_baku'";
 	mysqli_query($konek, $sql);
-
+	$_SESSION['status_operasi'] = 'add success';
 	header("Location: ../../pages/index.php?pengeluaran_bahan_baku");
 	exit();
 }
+$_SESSION['status_operasi'] = 'add failed';
 die ("Terdapat kesalahan : ". mysqli_error($konek));
 ?>

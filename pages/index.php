@@ -17,7 +17,81 @@
     ?>
 </head>
 
-<body class="theme-light-blue">
+<?php
+if (isset($_SESSION['status_operasi'])) {
+    if ($_SESSION['status_operasi']=="add success") {
+    	?> <body class="theme-light-blue" onload="pesan_add_success()"></body><?php
+    }else if ($_SESSION['status_operasi']=="add failed") {
+    	?> <body class="theme-light-blue" onload="pesan_add_failed()"></body><?php
+    }else if ($_SESSION['status_operasi']=="update success") {
+    	?> <body class="theme-light-blue" onload="pesan_update_success()"></body><?php
+    }else if ($_SESSION['status_operasi']=="update failed") {
+    	?> <body class="theme-light-blue" onload="pesan_update_failed()"></body><?php
+    }else if ($_SESSION['status_operasi']=="delete success") {
+    	?> <body class="theme-light-blue" onload="pesan_delete_success()"></body><?php
+    }else if ($_SESSION['status_operasi']=="delete failed") {
+    	?> <body class="theme-light-blue" onload="pesan_delete_failed()"></body><?php
+    }else{
+        ?><body class="theme-light-blue"><?php
+    }
+
+    unset($_SESSION['status_operasi']);
+}else{
+    ?><body class="theme-light-blue"><?php
+}
+
+?>
+
+    <script type="text/javascript">
+        function pesan_add_success(){
+            sweetAlert({
+            	title: "Sukses!",
+                text: "Data telah berhasil ditambahkan!",
+                type: "success"
+            });
+        }
+
+        function pesan_add_failed(){
+            sweetAlert({
+            	title: "Ooops!",
+                text: "Data gagal ditambahkan!",
+                type: "error"
+            });
+        }
+
+        function pesan_update_success(){
+            sweetAlert({
+            	title: "Sukses!",
+                text: "Data telah berhasil diperbaharui!",
+                type: "success"
+            });
+        }
+
+        function pesan_update_failed(){
+            sweetAlert({
+            	title: "Ooops!",
+                text: "Data gagal diperbaharui!",
+                type: "error"
+            });
+        }
+
+        function pesan_delete_success(){
+            sweetAlert({
+            	title: "Sukses!",
+                text: "Data telah berhasil dihapus!",
+                type: "success"
+            });
+        }
+
+        function pesan_delete_failed(){
+            sweetAlert({
+            	title: "Ooops!",
+                text: "Data gagal dihapus!",
+                type: "error"
+            });
+        }
+    </script>
+
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->

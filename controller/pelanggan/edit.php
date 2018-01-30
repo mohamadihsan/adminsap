@@ -1,6 +1,6 @@
 <?php
 include "../../config/koneksi.php";
-
+session_start();
 $id_pelanggan                  = $_POST["id_pelanggan"];
 $nama_pelanggan				   = $_POST["nama_pelanggan"];
 $alamat						   = $_POST["alamat"];
@@ -14,9 +14,11 @@ $id_user				       = $_POST["id_user"];
 
 if($edit = mysqli_query($konek, "UPDATE pelanggan SET id_pelanggan='$id_pelanggan', nama_pelanggan='$nama_pelanggan', alamat='$alamat', telepon='$telepon' , email='$email', kredit_limit='$kredit', id_user='$id_user', tipe_pelanggan='$tipe_pelanggan', status='$status'
           WHERE id_pelanggan='$id_pelanggan'")){
-		header("Location: ../../pages/index.php?pelanggan");
+              $_SESSION['status_operasi'] = 'update success';
+        header("Location: ../../pages/index.php?pelanggan");
 		exit();
 	}
+    $_SESSION['status_operasi'] = 'update failed';
 die ("Terdapat kesalahan : ". mysqli_error($konek));
 
 ?>

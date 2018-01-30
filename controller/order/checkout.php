@@ -138,10 +138,11 @@ try {
 		('$id_gudang','$id_produk', '$qty', '$id_user', 'TERJUAL')")){ }else{ die ("Terdapat kesalahan5 : ". mysqli_error($konek)); }
 
 	if($delete = mysqli_query($konek, "DELETE FROM cart WHERE no_invoice='$no_invoice'")){ }else{ die ("Terdapat kesalahan6 : ". mysqli_error($konek)); }
-
+	$_SESSION['status_operasi'] = 'add success';
 	header("Location: ../../pages/index.php?pemesanan_produk");
 	exit();
 } catch (Exception $e) {
+	$_SESSION['status_operasi'] = 'add failed';
 	die ("Terdapat kesalahan : ". mysqli_error($konek) .' & '.$e);
 }
 ?>

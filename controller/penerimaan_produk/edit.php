@@ -18,8 +18,10 @@ $sql = "UPDATE aliran_bahan_baku_dan_produk
         	id_aliran = '$id_aliran'";
 
 if ($add = mysqli_query($konek, $sql)){
+    $_SESSION['status_operasi'] = 'update success';
 	header("Location: ../../pages/index.php?penerimaan_produk");
 	exit();
 }
+$_SESSION['status_operasi'] = 'update failed';
 die ("Terdapat kesalahan : ". mysqli_error($konek));
 ?>

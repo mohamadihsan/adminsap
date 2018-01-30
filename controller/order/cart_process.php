@@ -1,5 +1,6 @@
 <?php
 include "../../config/koneksi.php";
+session_start();
 
 $no_invoice			   = $_POST["no_invoice"];
 $id_produk		       = $_POST["id_produk"];
@@ -13,9 +14,11 @@ $total=$data['harga']*$qty;
 
 if ($add = mysqli_query($konek, "INSERT INTO cart (no_invoice, id_produk, nama_pelanggan, qty, harga) VALUES
 	('$no_invoice','$id_produk','$nama_pelanggan','$qty','$total')")){
+		$_SESSION['status_operasi'] = 'add success';
 		header("Location: ../../pages/index.php?order-produks");
 		exit();
 	}
+	$_SESSION['status_operasi'] = 'add failed';
 die ("Terdapat kesalahan : ". mysqli_error($konek));
 
 ?>

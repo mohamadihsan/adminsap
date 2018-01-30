@@ -1,5 +1,6 @@
 <?php
 include "../../config/koneksi.php";
+session_start();
 
 $id_produk				           = $_POST["id_produk"];
 $id_bahan_baku				       = $_POST["id_bahan_baku"];
@@ -22,6 +23,7 @@ $add_aliran = mysqli_query($konek, "INSERT INTO aliran_bahan_baku_dan_produk (id
 
 $add = mysqli_query($konek, "INSERT INTO komposisi_produk (id_produk, id_bahan_baku, komposisi, status) VALUES
 	('$id_produk','$id_bahan_baku','$komposisi','SUDAH DIBUAT')") or die(mysqli_error($konek));
+	$_SESSION['status_operasi'] = 'add success';
 header("location: ../../pages/index.php?komposisi_produk");
 
 ?>

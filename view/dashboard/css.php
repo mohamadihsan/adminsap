@@ -36,3 +36,6 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../assets/css/themes/all-themes.css" rel="stylesheet" />
+
+	<!-- gritter notification -->
+	<link rel="stylesheet" href="../assets/css/jquery.gritter.min.css" />

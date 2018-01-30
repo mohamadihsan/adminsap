@@ -59,6 +59,9 @@
     <!-- Jquery CountTo Plugin Js -->
     <script src="../assets/plugins/jquery-countto/jquery.countTo.js"></script>
 
+    <!-- gritter notification -->
+    <script src="../assets/js/jquery.gritter.min.js"></script>
+
     <!-- Custom Js -->
     <script src="../assets/js/admin.js"></script>
     <script src="../assets/js/pages/forms/form-wizard.js"></script>
