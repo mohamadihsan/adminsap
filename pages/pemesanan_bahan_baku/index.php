@@ -1,7 +1,7 @@
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>PEMANTAUAN PRODUKSI</h2>
+                <h2>PEMESANAN</h2>
             </div>
 
             <!-- Widgets -->
@@ -12,7 +12,7 @@
                             <i class="material-icons">account_circle</i>
                         </div>
                         <div class="content">
-                            <div class="text">JUMLAH PRODUK</div>
+                            <div class="text">JUMLAH PEMESANAN</div>
                             <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
                         </div>
                     </div>
@@ -23,7 +23,7 @@
                             <i class="material-icons">new_releases</i>
                         </div>
                         <div class="content">
-                            <div class="text">PRODUK DIBAWAH LIMIT</div>
+                            <div class="text">PEMESANAN DIBAWAH LIMIT</div>
                             <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                             <i class="material-icons">playlist_add_check</i>
                         </div>
                         <div class="content">
-                            <div class="text">PRODUK AMAN LIMIT</div>
+                            <div class="text">PEMESANAN AMAN LIMIT</div>
                             <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                             <i class="material-icons">person_add</i>
                         </div>
                         <div class="content">
-                            <div class="text">PRODUK BARU</div>
+                            <div class="text">PEMESANAN BARU</div>
                             <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
@@ -58,9 +58,7 @@
                     <div class="card-table">
                         <div class="header">
                             <div class="row clearfix">
-                               <a href="index.php?tambah_pemantauan"><button type="button" class="btn bg-gradient btn-circle waves-effect waves-circle waves-float" style="margin-left: 10px;">
-                                    <i class="material-icons">add</i>
-                                </button></a>
+                                  <a href="index.php?order_bahan_baku"><button id="add_pemesanan" class="btn btn-lg bg-gradient waves-effect" type="submit">TAMBAH ORDER</button></a>
                             </div>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -78,7 +76,7 @@
                         <div class="body">
                            <?php
 
-								include 'table_pemantauan.php';
+								include 'table_pemesanan.php';
 
                            ?>
                         </div>
@@ -88,31 +86,3 @@
             <!-- #END# CPU Usage -->
         </div>
     </section>
-
-    <div class="modal fade" id="update" role="dialog">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header bg-primary">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><i class="fa fa-trash"></i> Hapus Data</h4>
-                </div>
-                <form method="post" action="../controller/pemantauan_produksi/edit.php" class="myform">
-                    <div class="modal-body">
-                        <input type="hidden" name="id_monitoring_produksi"  readonly>
-                        <input type="hidden" name="status_produksi" readonly>
-                        <p>Apakah anda akan mengubah status data ini?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-sm btn-primary"> Update</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <script>
-    function update(status_produksi, id_monitoring_produksi){
-        $('.modal-body input[name=status_produksi]').val(status_produksi);
-        $('.modal-body input[name=id_monitoring_produksi]').val(id_monitoring_produksi);
-    }
-    </script>

@@ -113,7 +113,9 @@ if (isset($_SESSION['status_operasi'])) {
     <!-- Menuju Menu Sesuai Hak Akses -->
     <?php
 
-    if($_SESSION['id_user'] == 3 ) {
+    if($_SESSION['id_user'] == 1 ) {
+        require('../view/navbar/administratormenu.php');
+    }else if($_SESSION['id_user'] == 3 ) {
         require('../view/navbar/salesmenu.php');
     }else if ($_SESSION['id_user'] == 4 ) {
         require('../view/navbar/produksimenu.php');
@@ -121,6 +123,8 @@ if (isset($_SESSION['status_operasi'])) {
         require('../view/navbar/gudangmenu.php');
     }else if ($_SESSION['id_user'] == 6 ) {
         require('../view/navbar/purchasingmenu.php');
+    }else if ($_SESSION['id_user'] == 7 ) {
+        require('../view/navbar/kepalakeuanganmenu.php');
     }
 
     ?>
@@ -142,7 +146,10 @@ if (isset($_SESSION['status_operasi'])) {
        }else if (isset($_GET['pemesanan_produk'])){
          include "../pages/pemesanan_produk/index.php";
 
-     }else if (isset($_GET['pengiriman_produk'])){
+     }else if (isset($_GET['pemesanan_bahan_baku'])){
+       include "../pages/pemesanan_bahan_baku/index.php";
+
+   }else if (isset($_GET['pengiriman_produk'])){
         include "../pages/pengiriman_produk/index.php";
 
      }else if (isset($_GET['bahan_baku'])){
@@ -184,10 +191,19 @@ if (isset($_SESSION['status_operasi'])) {
 
 
 
+     }else if (isset($_GET['order_bahan_baku'])){
+         include "../pages/order_bahan_baku/index.php";
+
       }else if (isset($_GET['pelanggan'])){
          include "../pages/pelanggan/index.php";
 
-      }else if (isset($_GET['supplier'])){
+     }else if (isset($_GET['pegawai'])){
+         include "../pages/pegawai/index.php";
+
+     }else if (isset($_GET['user'])){
+          include "../pages/user/index.php";
+
+       }else if (isset($_GET['supplier'])){
          include "../pages/supplier/index.php";
 
       }else if (isset($_GET['peramalan_produk'])){
@@ -214,7 +230,17 @@ if (isset($_SESSION['status_operasi'])) {
       }else if (isset($_GET['id_pelanggan'])){
          include "pelanggan/edit.php";
 
-     }else if (isset($_GET['tambah_kendaraan'])){
+     }else if (isset($_GET['tambah-pegawai'])){
+        include "pegawai/add.php";
+    }else if (isset($_GET['id_pegawai'])){
+        include "pegawai/edit.php";
+
+    }else if (isset($_GET['tambah-user'])){
+       include "user/add.php";
+   }else if (isset($_GET['id_user'])){
+       include "user/edit.php";
+
+   }else if (isset($_GET['tambah_kendaraan'])){
          include "kendaraan/add.php";
      }else if (isset($_GET['id_kendaraan'])){
          include "kendaraan/edit.php";

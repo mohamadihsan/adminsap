@@ -10,30 +10,14 @@
                             <span>Home</span>
                         </a>
                     </li>
+
                     <li>
-                        <a href="index.php?bahan_baku">
-                            <i class="material-icons">call_to_action</i>
-                            <span>Bahan Baku</span>
+                        <a href="index.php?konfirmasi_pembayaran_produk">
+                            <i class="material-icons">account_balance_wallet</i>
+                            <span>Konfirmasi Pembayaran</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="index.php?supplier">
-                            <i class="material-icons">account_box</i>
-                            <span>Supplier</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="index.php?pemesanan_bahan_baku">
-                            <i class="material-icons">shopping_cart</i>
-                            <span>Order Bahan Baku</span>
-                        </a>
-                    </li>
-                     <li>
-                        <a href="../controller/logout.php">
-                            <i class="material-icons">remove_circle</i>
-                            <span>Keluar</span>
-                        </a>
-                    </li>
+
                 </ul>
             </div>
             <!-- #Menu -->

@@ -39,6 +39,14 @@ if ($_POST){
 					header ("Location: ../pages/index.php?".$_SESSION['id_user']."". ($_SESSION['username'])."");
 					exit();
 				}
+				else if($_SESSION["hak_akses"] == 'kepala keuangan'){
+					header ("Location: ../pages/index.php?".$_SESSION['id_user']."". ($_SESSION['username'])."");
+					exit();
+				}
+				else if($_SESSION["hak_akses"] == 'administrator'){
+					header ("Location: ../pages/index.php?".$_SESSION['id_user']."". ($_SESSION['username'])."");
+					exit();
+				}
 				else{
 					header("Location : ../pages/404/index.php");
 					exit();
