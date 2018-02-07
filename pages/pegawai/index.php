@@ -1,3 +1,9 @@
+<?php
+    $sql = "SELECT COUNT(*) as jumlah_pegawai FROM pegawai";
+    $result = mysqli_query($konek, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $jumlah_pegawai = $row['jumlah_pegawai'];
+?>
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
@@ -13,7 +19,7 @@
                         </div>
                         <div class="content">
                             <div class="text">JUMLAH PEGAWAI</div>
-                            <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"><?= $jumlah_pegawai ?></div>
                         </div>
                     </div>
                 </div>

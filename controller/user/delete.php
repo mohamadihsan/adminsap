@@ -1,11 +1,11 @@
 <?php
 include "../../config/koneksi.php";
 session_start();
-$id_pegawai = $_GET["id_pegawai"];
+$id_user = $_GET["id_user"];
 
-if($delete = mysqli_query($konek, "DELETE FROM pegawai WHERE id_pegawai='$id_pegawai'")){
+if($delete = mysqli_query($konek, "DELETE FROM user WHERE id_user='$id_user'")){
 		$_SESSION['status_operasi'] = 'delete success';
-		header("Location: ../../pages/index.php?pegawai");
+		header("Location: ../../pages/index.php?user");
 		exit();
 	}
 

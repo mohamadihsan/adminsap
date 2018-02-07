@@ -37,8 +37,9 @@ if (isset($_GET['id_order_pembelian'])) {
 		<tr>
 			<th>No Invoice</th>
 			<th>Tgl Order</th>
-			<th>Status</th>
+			<th>Status Order</th>
 			<th>Total Pembayaran</th>
+            <th>Approval</th>
 			<th>Action</th>
 		</tr>
 	</thead>
@@ -53,6 +54,7 @@ if (isset($_GET['id_order_pembelian'])) {
                 	p.id_order_pembelian,
                 	p.no_invoice,
                 	p.tanggal_order,
+                    p.approval,
                 	DAY (p.tanggal_order) AS Hari,
                 	MONTHNAME(p.tanggal_order) AS Bulan,
                 	YEAR (p.tanggal_order) AS Tahun,
@@ -91,6 +93,21 @@ if (isset($_GET['id_order_pembelian'])) {
 			echo "
 					<td>{$fn($spl["total_pembayaran"])}</td>";
 
+                    if($spl['approval']==null){
+                        echo " <td><button class='btn-status bg-gradient-red waves-effect'>BLM APRV</button></td>";
+                      }else{
+                        echo " <td><button class='btn-status bg-gradient-green waves-effect'>DISETUJUI</button></td>";
+                      }
+
+                    if($_SESSION['hak_akses']=='supervisor'){
+                        if ($spl['approval'] == '' ){
+                          echo " <td><a href='index.php?pemesanan_bahan_baku=true&id_order_pembelian=$spl[id_order_pembelian]'><button class='btn-status bg-grey waves-effect'>RINCIAN</button></a>
+                              <a href='../controller/order/approval.php?id_order_pembelian=$spl[id_order_pembelian]' class='lanjut-link'><button class='btn-status bg-gradient-blue waves-effect'>KONFIRM</button></a></td>";
+                        }else{
+                          echo" <td></td>";
+                        };
+                    }else{
+
 					if ($spl['status_order'] == '' ){
 			          echo " <td><a href='index.php?pemesanan_bahan_baku=true&no_invoice=$spl[no_invoice]'><button class='btn-status bg-grey waves-effect'>RINCIAN</button></a>
 			              <a href='../controller/order/confirm_bayar.php?id_order_pembelian=$spl[id_order_pembelian]' class='lanjut-link'><button class='btn-status bg-gradient-blue waves-effect'>KONFIRM</button></a></td>";
@@ -100,7 +117,7 @@ if (isset($_GET['id_order_pembelian'])) {
 					};
 
 			echo "
-				</tr>";
+				</tr>";}
 		} ?>
 	</tbody>
 </table>

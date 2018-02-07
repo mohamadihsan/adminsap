@@ -115,6 +115,8 @@ if (isset($_SESSION['status_operasi'])) {
 
     if($_SESSION['id_user'] == 1 ) {
         require('../view/navbar/administratormenu.php');
+    }else if($_SESSION['id_user'] == 2 ) {
+        require('../view/navbar/supervisormenu.php');
     }else if($_SESSION['id_user'] == 3 ) {
         require('../view/navbar/salesmenu.php');
     }else if ($_SESSION['id_user'] == 4 ) {
@@ -194,7 +196,10 @@ if (isset($_SESSION['status_operasi'])) {
      }else if (isset($_GET['order_bahan_baku'])){
          include "../pages/order_bahan_baku/index.php";
 
-      }else if (isset($_GET['pelanggan'])){
+     }else if (isset($_GET['pembelian_barang'])){
+          include "../pages/pemesanan_bahan_baku/index.php";
+
+       }else if (isset($_GET['pelanggan'])){
          include "../pages/pelanggan/index.php";
 
      }else if (isset($_GET['pegawai'])){

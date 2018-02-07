@@ -78,7 +78,7 @@
                                             <i class="material-icons">home</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="text" name="alamat" class="form-control" placeholder="Alamat" required>
+                                            <input type="text" name="address" class="form-control" placeholder="Alamat" required>
                                         </div>
                                     </div>
                                 </div>

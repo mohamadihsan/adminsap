@@ -1,19 +1,17 @@
 <?php
 include "../../config/koneksi.php";
 session_start();
-$id_pegawai                  = $_POST["id_pegawai"];
-$nip                  = $_POST["nip"];
-$nama_pegawai				   = $_POST["nama_pegawai"];
-$alamat						   = $_POST["alamat"];
-$phone_number     				   = $_POST["phone_number"];
-$email					       = $_POST["email"];
-$status				           = $_POST["status"];
+$id_user                   = $_POST["id_user"];
+$username				   = $_POST["username"];
+$password				   = md5($_POST["password"]);
+$hak_akses				   = $_POST["hak_akses"];
+$status     			   = $_POST["status"];
 
 
-if($edit = mysqli_query($konek, "UPDATE pegawai SET nip='$nip', nama_pegawai='$nama_pegawai', alamat='$alamat', phone_number='$phone_number' , email='$email', status='$status'
-          WHERE id_pegawai='$id_pegawai'")){
+if($edit = mysqli_query($konek, "UPDATE user SET username='$username', password='$password', hak_akses='$hak_akses', status='$status'
+          WHERE id_user='$id_user'")){
               $_SESSION['status_operasi'] = 'update success';
-        header("Location: ../../pages/index.php?pegawai");
+        header("Location: ../../pages/index.php?user");
 		exit();
 	}
     $_SESSION['status_operasi'] = 'update failed';

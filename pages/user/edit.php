@@ -7,7 +7,7 @@ $queryuser = mysqli_query($konek, "SELECT * FROM user WHERE id_user='$id_user' G
 if($queryuser == false){
   die ("Terjadi Kesalahan : ". mysqli_error($konek));
 }
-while($user = mysqli_fetch_array($queryuser)){
+$user = mysqli_fetch_array($queryuser);
 
 ?>
 <section class="content">
@@ -68,13 +68,13 @@ while($user = mysqli_fetch_array($queryuser)){
                                       </span>
                                       <div class="form-line">
                                           <select class="select" name="hak_akses" required>
-                                              <option value="administrator">administrator</option>
-                                              <option value="supervisor">supervisor</option>
-                                              <option value="sales admin">sales admin</option>
-                                              <option value="kepala produksi">kepala produksi</option>
-                                              <option value="admin gudang">admin gudang</option>
-                                              <option value="purchasing">purchasing</option>
-                                              <option value="kepala keuangan">kepala keuangan</option>
+                                              <option value="administrator" <?php if($user['hak_akses']=='administrator') echo 'selected' ?> >administrator</option>
+                                              <option value="supervisor" <?php if($user['hak_akses']=='supervisor') echo 'selected' ?>>supervisor</option>
+                                              <option value="sales admin" <?php if($user['hak_akses']=='sales admin') echo 'selected' ?>>sales admin</option>
+                                              <option value="kepala produksi" <?php if($user['hak_akses']=='kepala produksi') echo 'selected' ?>>kepala produksi</option>
+                                              <option value="admin gudang" <?php if($user['hak_akses']=='admin gudang') echo 'selected' ?>>admin gudang</option>
+                                              <option value="purchasing" <?php if($user['hak_akses']=='purchasing') echo 'selected' ?>>purchasing</option>
+                                              <option value="kepala keuangan" <?php if($user['hak_akses']=='kepala keuangan') echo 'selected' ?>>kepala keuangan</option>
                                           </select>
                                       </div>
                                   </div>
@@ -114,6 +114,3 @@ while($user = mysqli_fetch_array($queryuser)){
             <!-- #END# Input -->
         </div>
     </section>
-    <?php
-      }
-    ?>

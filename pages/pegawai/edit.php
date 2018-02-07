@@ -80,7 +80,7 @@ while($pegawai = mysqli_fetch_array($querypegawai)){
                                             <i class="material-icons">home</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="text" name="alamat" class="form-control" placeholder="Alamat" value="<?php echo $pegawai["address"]; ?>" required>
+                                            <input type="text" name="address" class="form-control" placeholder="Alamat" value="<?php echo $pegawai["address"]; ?>" required>
                                         </div>
                                     </div>
                                 </div>
@@ -128,9 +128,7 @@ while($pegawai = mysqli_fetch_array($querypegawai)){
                                                 $sql = "SELECT
                                                         	*
                                                         FROM
-                                                        	user
-                                                        WHERE
-                                                        	id_user NOT IN (SELECT id_user FROM pegawai)";
+                                                        	user";
                                                 $result = mysqli_query($konek, $sql);
                                                 while ($row=mysqli_fetch_assoc($result)) {
                                                     $id_user = $row['id_user'];

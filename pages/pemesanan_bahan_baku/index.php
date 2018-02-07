@@ -57,9 +57,17 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="card-table">
                         <div class="header">
-                            <div class="row clearfix">
-                                  <a href="index.php?order_bahan_baku"><button id="add_pemesanan" class="btn btn-lg bg-gradient waves-effect" type="submit">TAMBAH ORDER</button></a>
-                            </div>
+
+                            <?php  
+                            if($_SESSION['hak_akses']!='supervisor'){
+                                ?>
+                                <div class="row clearfix">
+                                      <a href="index.php?order_bahan_baku"><button id="add_pemesanan" class="btn btn-lg bg-gradient waves-effect" type="submit">TAMBAH ORDER</button></a>
+                                </div>
+                                <?php
+                            }
+                            ?>
+
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
