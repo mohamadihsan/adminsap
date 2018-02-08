@@ -40,9 +40,9 @@
                     </li>
 
                      <li>
-                        <a href="index.php?retur">
+                        <a href="index.php?approval_retur">
                             <i class="material-icons">undo</i>
-                            <span>Retur</span>
+                            <span>Approval Retur</span>
                         </a>
                     </li>
 

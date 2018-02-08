@@ -148,7 +148,16 @@ if (isset($_SESSION['status_operasi'])) {
        }else if (isset($_GET['pemesanan_produk'])){
          include "../pages/pemesanan_produk/index.php";
 
-     }else if (isset($_GET['pemesanan_bahan_baku'])){
+     }else if (isset($_GET['verifikasi_persetujuan'])){
+       include "../pages/verifikasi_persetujuan/index.php";
+
+   }else if (isset($_GET['konfirmasi_pembayaran'])){
+     include "../pages/konfirmasi_pembayaran/index.php";
+
+ }else if (isset($_GET['approval_retur'])){
+   include "../pages/approval_retur/index.php";
+
+}else if (isset($_GET['pemesanan_bahan_baku'])){
        include "../pages/pemesanan_bahan_baku/index.php";
 
    }else if (isset($_GET['pengiriman_produk'])){
