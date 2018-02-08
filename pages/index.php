@@ -15,6 +15,18 @@
     <?php
         include "../view/dashboard/css.php";
     ?>
+    <!-- chart -->
+    <script src="../assets/chart/Chart.bundle.js"></script>
+    <script src="../assets/chart/utils.js"></script>
+
+    <style>
+    canvas{
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+
+    </style>
 </head>
 
 <?php

@@ -1,14 +1,14 @@
- 
+
                 <thead>
 					<tr>
 						<th>Nama Pelanggan</th>
-						<th>Alamat</th>
-						<th>Email</th>
+						<th width="15%">Alamat</th>
+						<th width="15%">Email</th>
 						<th>Telepon</th>
 						<th>Tipe</th>
 						<th>Kredit</th>
 						<th>Status</th>
-						<th>Action</th>
+						<th width="10%">Action</th>
 					</tr>
 				</thead>
 				<tbody>
