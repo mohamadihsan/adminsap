@@ -3,8 +3,9 @@
 if (isset($_GET['id_order_penjualan'])) {
     $id = $_GET['id_order_penjualan'];
     ?>
+    <a href="index.php?pemesanan_produk" class="btn btn-sm">Kembali</a>
     <table class="table table-responsive">
-        <caption><b><h2>RINCIAN</h2></b></caption>
+        <caption><b><h4>Rincian Pemesanan</h4></b></caption>
         <tr>
             <th>No</th>
             <th>Nama Produk</th>
@@ -28,58 +29,74 @@ if (isset($_GET['id_order_penjualan'])) {
         ?>
     </table>
     <?php
-}
-?>
+}else{
+    ?>
 
 
-  <table class="table table-hover dataTable js-exportable">
-                <thead>
-					<tr>
-						<th>No Invoice</th>
-						<th>Tgl Order</th>
-						<th>Status</th>
-						<th>Total Pembayaran</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php
-$fn = 'convert_to_rupiah';
-function convert_to_rupiah($angka)
-    {return 'Rp. '.strrev(implode('.',str_split(strrev(strval($angka)),3)));}; // Setting Untuk Fungsi Rupiah
-?>
-					<?php
-						$queryspl = mysqli_query ($konek, "SELECT order_penjualan.total_pembayaran, order_penjualan.id_order_penjualan, order_penjualan_detail.id_order_penjualan, order_penjualan.no_invoice, order_penjualan.tanggal_order, DAY(order_penjualan.tanggal_order) as Hari, MONTHNAME(order_penjualan.tanggal_order) as Bulan, YEAR(order_penjualan.tanggal_order) as Tahun, order_penjualan.tgl_pesan, DAY(order_penjualan.tgl_pesan) as HariPesan, MONTHNAME(order_penjualan.tgl_pesan) as BulanPesan, YEAR(order_penjualan.tgl_pesan) as TahunPesan, order_penjualan.nama_pelanggan, order_penjualan_detail.nama_produk, order_penjualan.tgl_pesan, order_penjualan.status_order, order_penjualan_detail.harga, DATE_ADD(tgl_pesan, INTERVAL 3 DAY) as kirim FROM order_penjualan INNER JOIN order_penjualan_detail WHERE order_penjualan.id_order_penjualan = order_penjualan_detail.id_order_penjualan");
-						if($queryspl == false){
-							die ("Terjadi Kesalahan : ". mysqli_error($konek));
-						}
+     <table class="table table-hover dataTable js-exportable">
+        <thead>
+    		<tr>
+    			<th>No Invoice</th>
+    			<th>Tgl Order</th>
+    			<th>Status Order</th>
+    			<th>Status Approval</th>
+    			<th>Status Pembayaran</th>
+    			<th>Total Pembayaran</th>
+    			<th width="10%">Action</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<?php
 
-						while ($spl = mysqli_fetch_array ($queryspl)){
+            $fn = 'convert_to_rupiah';
+            function convert_to_rupiah($angka)
+            {return 'Rp. '.strrev(implode('.',str_split(strrev(strval($angka)),3)));}; // Setting Untuk Fungsi Rupiah
 
-							echo "
-								<tr>
-									<td>$spl[no_invoice]</td>
-									<td>$spl[Hari] $spl[Bulan] $spl[Tahun]</td>";
-									if ($spl['status_order'] == 'MENUNGGU PEMBAYARAN' ){
-							          echo " <td><button class='btn-status bg-gradient-red waves-effect'>BLM BAYAR</button></td>";
-									}else{
-									  echo" <td><button class='btn-status bg-gradient-green waves-effect'>SDH BAYAR</button></td>";
-									};
+    		$queryspl = mysqli_query ($konek, "SELECT order_penjualan.total_pembayaran, order_penjualan.approval, order_penjualan.tgl_pembayaran, order_penjualan.id_order_penjualan, order_penjualan_detail.id_order_penjualan, order_penjualan.no_invoice, order_penjualan.tanggal_order, DAY(order_penjualan.tanggal_order) as Hari, MONTHNAME(order_penjualan.tanggal_order) as Bulan, YEAR(order_penjualan.tanggal_order) as Tahun, order_penjualan.tgl_pesan, DAY(order_penjualan.tgl_pesan) as HariPesan, MONTHNAME(order_penjualan.tgl_pesan) as BulanPesan, YEAR(order_penjualan.tgl_pesan) as TahunPesan, order_penjualan.nama_pelanggan, order_penjualan_detail.nama_produk, order_penjualan.tgl_pesan, order_penjualan.status_order, order_penjualan_detail.harga, DATE_ADD(tgl_pesan, INTERVAL 3 DAY) as kirim FROM order_penjualan INNER JOIN order_penjualan_detail WHERE order_penjualan.id_order_penjualan = order_penjualan_detail.id_order_penjualan");
+    		if($queryspl == false){
+    			die ("Terjadi Kesalahan : ". mysqli_error($konek));
+    		}
 
-							echo "
-									<td>{$fn($spl["total_pembayaran"])}</td>";
+    		while ($spl = mysqli_fetch_array ($queryspl)){
 
-									if ($spl['status_order'] == '' ){
-							          echo " <td><a href='index.php?pemesanan_produk=true&no_invoice=$spl[no_invoice]'><button class='btn-status bg-grey waves-effect'>RINCIAN</button></a>
-							              <a href='../controller/order/confirm_bayar.php?id_order_penjualan=$spl[id_order_penjualan]' class='lanjut-link'><button class='btn-status bg-gradient-blue waves-effect'>KONFIRM</button></a></td>";
-									}else{
-									  echo" <td><a href='index.php?pemesanan_produk=true&id_order_penjualan=$spl[id_order_penjualan]'><button class='btn-status bg-grey waves-effect'>RINCIAN</button></a>
-										    <a href='#'><button class='btn-status bg-gradient-green waves-effect'>LUNAS</button></a></td>";
-									};
+    			echo "
+    				<tr>
+    					<td>$spl[no_invoice]</td>
+    					<td>$spl[Hari] $spl[Bulan] $spl[Tahun]</td>";
+    					if ($spl['status_order'] == 'MENUNGGU PEMBAYARAN' ){
+    			          echo " <td><button class='btn-status bg-gradient-red waves-effect'>PENDING</button></td>";
+    					}else{
+    					  echo" <td><button class='btn-status bg-gradient-green waves-effect'>".$spl['status_order']."</button></td>";
+    					};
 
-							echo "
-								</tr>";
-						}
-					?>
-				</tbody>
-                            </table>
+                        if ($spl['approval'] == '' ){
+    			          echo " <td><button class='btn-status bg-gradient-red waves-effect'>PENDING</button></td>";
+    					}else{
+    					  echo" <td><button class='btn-status bg-gradient-green waves-effect'>".$spl['approval']."</button></td>";
+    					};
+
+                        if ($spl['tgl_pembayaran'] == '' ){
+    			          echo " <td><button class='btn-status bg-gradient-red waves-effect'>BLM BAYAR</button></td>";
+    					}else{
+    					  echo" <td><button class='btn-status bg-gradient-green waves-effect'>SDH BAYAR</button></td>";
+    					};
+
+    			echo "
+    					<td>{$fn($spl["total_pembayaran"])}</td>";
+
+    					if ($spl['status_order'] == '' ){
+    			          echo " <td><a href='index.php?pemesanan_produk=true&no_invoice=$spl[no_invoice]'><button class='btn-status bg-grey waves-effect'>RINCIAN</button></a>
+    			              ";
+    					}else{
+    					  echo" <td><a href='index.php?pemesanan_produk=true&id_order_penjualan=$spl[id_order_penjualan]'><button class='btn-status bg-grey waves-effect'>RINCIAN</button></a>
+    						    ";
+    					};
+
+    			echo "
+    				</tr>";
+    		}
+    		?>
+    	</tbody>
+    </table>
+    <?php
+} ?>

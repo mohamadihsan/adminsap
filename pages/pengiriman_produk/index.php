@@ -76,13 +76,13 @@
                             </ul>
                         </div>
                         <div class="body">
-                          <table class="table table-hover dataTable js-exportable">
+
                            <?php
 
 								include 'table_pengiriman_produk.php';
 
                            ?>
-						  </table>
+                           
                         </div>
                     </div>
                 </div>

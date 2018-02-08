@@ -272,15 +272,130 @@
                             $sql = "SELECT * FROM produk WHERE stok <= 0";
                             $result = mysqli_query($konek, $sql);
                             $no=1;
-                            while($row = mysqli_fetch_assoc($result)){
-                                $nama_produk = $row['nama_produk'];
+                            if(mysqli_num_rows($result)>0){
+                                while($row = mysqli_fetch_assoc($result)){
+                                    $nama_produk = $row['nama_produk'];
+                                    ?>
+                                    <tr>
+                                        <td><?= $no++ ?></td>
+                                        <td><?= $nama_produk ?></td>
+                                        <td>
+                                            <button class='btn-status bg-gradient-red waves-effect'>TIDAK AMAN</button>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                            }else{
                                 ?>
                                 <tr>
-                                    <td><?= $no++ ?></td>
-                                    <td><?= $nama_produk ?></td>
-                                    <td>
-                                        <button class='btn-status bg-gradient-red waves-effect'>TIDAK AMAN</button>
-                                    </td>
+                                    <td colspan="3">Stok Produk Aman</td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+
+                </div>
+                <?php
+            }else if ($_SESSION['hak_akses']=='kepala produksi'){
+                ?>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="block-header">
+                        <h1>Halaman Utama <small>Kepala Produksi</small></h1>
+                    </div>
+                </div>
+
+                <?php
+
+                    $sql = "SELECT COUNT(*) as jumlah_stok_produk FROM produk WHERE stok <= 0";
+                    $result = mysqli_query($konek, $sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $jumlah_stok_produk = $row['jumlah_stok_produk'];
+
+                    $sql = "SELECT COUNT(*) as jumlah_bahan_baku FROM bahan_baku";
+                    $result = mysqli_query($konek, $sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $jumlah_bahan_baku = $row['jumlah_bahan_baku'];
+
+                    $sql = "SELECT COUNT(*) as jumlah_produk FROM produk";
+                    $result = mysqli_query($konek, $sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $jumlah_produk = $row['jumlah_produk'];
+
+                ?>
+
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box-2 bg-red hover-zoom-effect">
+                            <div class="icon">
+                                <i class="material-icons">assignment_return</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">STOK PRODUK TIDAK AMAN</div>
+                                <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"><?= $jumlah_stok_produk ?></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box-2 bg-blue hover-zoom-effect">
+                            <div class="icon">
+                                <i class="material-icons">dns</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">TOTAL PRODUK</div>
+                                <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"><?= $jumlah_produk ?></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box-2 bg-teal hover-zoom-effect">
+                            <div class="icon">
+                                <i class="material-icons">dns</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">TOTAL BAHAN BAKU</div>
+                                <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"><?= $jumlah_bahan_baku ?></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    <table class="table table-responsive">
+                        <caption><h4>Monitoring Stok</h4></caption>
+                        <thead>
+                            <tr>
+                                <th width="5%">No</th>
+                                <th>Produk</th>
+                                <th width="25%">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $sql = "SELECT * FROM produk WHERE stok <= 0";
+                            $result = mysqli_query($konek, $sql);
+                            $no=1;
+                            if(mysqli_num_rows($result)>0){
+                                while($row = mysqli_fetch_assoc($result)){
+                                    $nama_produk = $row['nama_produk'];
+                                    ?>
+                                    <tr>
+                                        <td><?= $no++ ?></td>
+                                        <td><?= $nama_produk ?></td>
+                                        <td>
+                                            <button class='btn-status bg-gradient-red waves-effect'>TIDAK AMAN</button>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                            }else{
+                                ?>
+                                <tr>
+                                    <td colspan="3">Stok Produk Aman</td>
                                 </tr>
                                 <?php
                             }
