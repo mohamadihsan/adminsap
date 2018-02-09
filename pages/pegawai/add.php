@@ -142,6 +142,10 @@
                                                 while ($row=mysqli_fetch_assoc($result)) {
                                                     $id_user = $row['id_user'];
                                                     $hak_akses = $row['hak_akses'];
+
+                                                    if ($hak_akses == 'kepala keuangan') {
+                                                        $hak_akses = 'akuntan';
+                                                    }
                                                     ?>
                                                     <option value="<?= $id_user ?>"><?= $hak_akses ?></option>
                                                     <?php

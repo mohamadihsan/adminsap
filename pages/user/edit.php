@@ -74,7 +74,7 @@ $user = mysqli_fetch_array($queryuser);
                                               <option value="kepala produksi" <?php if($user['hak_akses']=='kepala produksi') echo 'selected' ?>>kepala produksi</option>
                                               <option value="admin gudang" <?php if($user['hak_akses']=='admin gudang') echo 'selected' ?>>admin gudang</option>
                                               <option value="purchasing" <?php if($user['hak_akses']=='purchasing') echo 'selected' ?>>purchasing</option>
-                                              <option value="kepala keuangan" <?php if($user['hak_akses']=='kepala keuangan') echo 'selected' ?>>kepala keuangan</option>
+                                              <option value="kepala keuangan" <?php if($user['hak_akses']=='kepala keuangan') echo 'selected' ?>>akuntan</option>
                                           </select>
                                       </div>
                                   </div>

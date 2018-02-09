@@ -12,7 +12,7 @@
                     </li>
 
                     <li>
-                        <a href="index.php?konfirmasi_pembayaran_produk">
+                        <a href="index.php?konfirmasi_pembayaran">
                             <i class="material-icons">account_balance_wallet</i>
                             <span>Konfirmasi Pembayaran</span>
                         </a>

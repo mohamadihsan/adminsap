@@ -69,7 +69,7 @@
                                               <option value="kepala produksi">kepala produksi</option>
                                               <option value="admin gudang">admin gudang</option>
                                               <option value="purchasing">purchasing</option>
-                                              <option value="kepala keuangan">kepala keuangan</option>
+                                              <option value="kepala keuangan">akuntan</option>
                                           </select>
                                       </div>
                                   </div>

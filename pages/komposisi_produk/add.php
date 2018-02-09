@@ -48,7 +48,7 @@
                                             <?php
                                                 include '../config/koneksi.php';
 
-                                                $queryproduk = mysqli_query($konek, "SELECT * FROM produk WHERE status_komposisi = ''");
+                                                $queryproduk = mysqli_query($konek, "SELECT * FROM produk WHERE id_jenis='1'");
                                                 if($queryproduk == false){
                                                     die ("Terdapat Kesalahan : ". mysqli_error($konek));
                                                 }

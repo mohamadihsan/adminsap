@@ -133,6 +133,10 @@ while($pegawai = mysqli_fetch_array($querypegawai)){
                                                 while ($row=mysqli_fetch_assoc($result)) {
                                                     $id_user = $row['id_user'];
                                                     $hak_akses = $row['hak_akses'];
+
+                                                    if ($hak_akses == 'kepala keuangan') {
+                                                        $hak_akses = 'akuntan';
+                                                    }
                                                     ?>
                                                     <option value="<?= $id_user ?>" <?php if($id_user==$pegawai["id_user"]) echo 'selected' ?>><?= $hak_akses ?></option>
                                                     <?php

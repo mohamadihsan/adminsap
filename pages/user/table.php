@@ -16,12 +16,16 @@
 			}
 
 			while ($spl = mysqli_fetch_array ($queryspl)){
+                $hak_akses = $spl['hak_akses'];
+                if ($hak_akses == 'kepala keuangan') {
+                    $hak_akses = 'akuntan';
+                }
 
 				echo "
 					<tr>
 						<td>$spl[username]</td>
 						<td>$spl[password]</td>
-						<td>$spl[hak_akses]</td>";
+						<td>$hak_akses</td>";
 						if ($spl['status'] != '0'){
 				          echo " <td><button class='btn-status bg-gradient-green waves-effect'>Aktif</button></td>";
 						}else{
