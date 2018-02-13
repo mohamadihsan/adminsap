@@ -23,8 +23,7 @@
                     	order_penjualan op
                     LEFT JOIN order_penjualan_detail opd ON opd.id_order_penjualan = op.id_order_penjualan
                     WHERE
-                    	op.status_order = 'DITERIMA'
-                    AND op.approval = 'OK'";
+                    	op.approval = 'DISETUJUI'";
 			$queryspl = mysqli_query ($konek, $sql);
 			if($queryspl == false){
 				die ("Terjadi Kesalahan : ". mysqli_error($konek));
