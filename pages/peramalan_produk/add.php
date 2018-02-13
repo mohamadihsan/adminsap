@@ -62,7 +62,7 @@
                                                       			order_penjualan op
                                                       		LEFT JOIN order_penjualan_detail opd ON opd.id_order_penjualan = op.id_order_penjualan
                                                       		WHERE
-                                                      			op.approval = 'OK'
+                                                      			op.approval = 'DISETUJUI'
                                                       		GROUP BY
                                                       			1,
                                                       			2,
