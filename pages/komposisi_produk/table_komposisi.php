@@ -7,7 +7,7 @@
 	</thead>
 	<tbody>
 		<?php
-			$queryspl = mysqli_query ($konek, "SELECT  komposisi_produk.id_produk, produk.id_produk, komposisi_produk.status, produk.nama_produk FROM komposisi_produk JOIN produk ON komposisi_produk.id_produk = produk.id_produk");
+			$queryspl = mysqli_query ($konek, "SELECT  komposisi_produk.id_produk, produk.id_produk, komposisi_produk.status, produk.nama_produk FROM komposisi_produk JOIN produk ON komposisi_produk.id_produk = produk.id_produk GROUP BY 1,2,3,4");
 			if($queryspl == false){
 				die ("Terjadi Kesalahan : ". mysqli_error($konek));
 			}
