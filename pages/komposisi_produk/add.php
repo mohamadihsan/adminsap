@@ -68,7 +68,9 @@
                                                     die ("Terdapat Kesalahan : ". mysqli_error($konek));
                                                 }
                                                 while ($bahanbaku = mysqli_fetch_array($querybahanbaku)){
-                                                    echo "<option value='$bahanbaku[id_bahan_baku]'>$bahanbaku[nama_bahan_baku]</option>";
+                                                    ?>
+                                                    <option value="<?= $bahanbaku['id_bahan_baku'] ?>"><?= $bahanbaku['nama_bahan_baku']?></option>
+                                                    <?php
                                                 }
                                             ?>
                                             </select>
