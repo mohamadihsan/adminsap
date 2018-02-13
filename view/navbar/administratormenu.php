@@ -39,14 +39,14 @@
             </div>
             <!-- #Menu -->
             <!-- Footer -->
-            <div class="legal">
+            <!-- <div class="legal">
                 <div class="copyright">
                     &copy; 2017 <a href="javascript:void(0);">AdminSAP</a>.
                 </div>
                 <div class="version">
                     <b>Version: </b> 1.0.4
                 </div>
-            </div>
+            </div> -->
             <!-- #Footer -->
         </aside>
         <!-- #END# Left Sidebar -->

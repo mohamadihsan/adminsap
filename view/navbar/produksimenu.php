@@ -54,24 +54,24 @@
                         </ul>
                     </li>
 
-                    <li>
+                    <!-- <li>
                         <a href="../controller/logout.php">
                             <i class="material-icons">remove_circle</i>
                             <span>Keluar</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <!-- #Menu -->
             <!-- Footer -->
-            <div class="legal">
+            <!-- <div class="legal">
                 <div class="copyright">
                     &copy; 2017 <a href="javascript:void(0);">AdminSAP</a>.
                 </div>
                 <div class="version">
                     <b>Version: </b> 1.0.4
                 </div>
-            </div>
+            </div> -->
             <!-- #Footer -->
         </aside>
  <!-- #END# Left Sidebar -->
