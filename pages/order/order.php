@@ -1,8 +1,9 @@
 <?php
         $tanggal = date("Ymd");
-        $cari_kd=mysqli_query($konek, "select max(no_invoice)as kode from order_penjualan"); //mencari kode yang paling besar atau kode yang baru masuk
+        $cari_kd=mysqli_query($konek, "select max(id_order_penjualan)as kode from order_penjualan"); //mencari kode yang paling besar atau kode yang baru masuk
         $tm_cari=mysqli_fetch_array($cari_kd);
-        $kode= substr($tm_cari['kode'],12,12); //mengambil string mulai dari karakter pertama 'A' dan mengambil 4 karakter setelahnya.
+        // $kode= substr($tm_cari['kode'],12,12); //mengambil string mulai dari karakter pertama 'A' dan mengambil 4 karakter setelahnya.
+        $kode = $tm_cari['kode'];
         $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
             if($tambah<=9){ //jika kode lebih kecil dari 10 (9,8,7,6 dst) maka
             $id="INV".$tanggal."-".$tambah;
