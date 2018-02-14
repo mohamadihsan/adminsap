@@ -30,23 +30,29 @@ try {
 				sum(cart.harga) > 0";
 	// $copyorder=mysqli_query($konek, "select sum(cart.harga) as total, pelanggan.nama_pelanggan, pelanggan.id_pelanggan, cart.nama_pelanggan, cart.no_invoice, cart.id_produk, cart.qty, cart.harga from cart inner join pelanggan on cart.nama_pelanggan = pelanggan.nama_pelanggan");
 	if($copyorder=mysqli_query($konek, $sql)){ }else{ die ("Terdapat kesalahan1 : ". mysqli_error($konek)); }
-	$data=mysqli_fetch_array($copyorder);
-	$id_pelanggan=$data['id_pelanggan'];
-	$no_invoice=$data['no_invoice'];
-	$nama_pelanggan=$data['nama_pelanggan'];
-	$qty=$data['qty'];
-	$nama_produk=$data['nama_produk'];
-	$id_produk=$data['id_produk'];
-	$total=$data['total'];
-	$harga=$data['harga'];
-	$status_order = 'MENUNGGU PEMBAYARAN';
-	if($add = mysqli_query($konek, "INSERT INTO order_penjualan (no_invoice, id_pelanggan, nama_pelanggan, id_produk, status_order, total_pembayaran, id_user) VALUES
-		('$no_invoice','$id_pelanggan','$nama_pelanggan', '$id_produk', '$status_order', '$total', '$id_user')")){ }else{ die ("Terdapat kesalahan2 : ". mysqli_error($konek)); }
+	$i=0;
+	while($data=mysqli_fetch_array($copyorder)){
+		$id_pelanggan=$data['id_pelanggan'];
+		$no_invoice=$data['no_invoice'];
+		$nama_pelanggan=$data['nama_pelanggan'];
+		$qty=$data['qty'];
+		$nama_produk=$data['nama_produk'];
+		$id_produk=$data['id_produk'];
+		$total=$data['total'];
+		$harga=$data['harga'];
+		$status_order = 'MENUNGGU PEMBAYARAN';
+		if ($i==0) {
+			if($add = mysqli_query($konek, "INSERT INTO order_penjualan (no_invoice, id_pelanggan, nama_pelanggan, id_produk, status_order, total_pembayaran, id_user) VALUES
+				('$no_invoice','$id_pelanggan','$nama_pelanggan', '$id_produk', '$status_order', '$total', '$id_user')")){ }else{ die ("Terdapat kesalahan2 : ". mysqli_error($konek)); }
 
-	$id_order_penjualan = mysqli_insert_id($konek);
+			$id_order_penjualan = mysqli_insert_id($konek);
+		}
 
-	// $details=mysqli_query($konek, "INSERT INTO order_penjualan_detail (id_order_penjualan, nama_pelanggan, no_invoice, nama_produk, qty, harga) select nama_pelanggan, no_invoice, id_produk, qty, harga from cart");
-	if($details=mysqli_query($konek, "INSERT INTO order_penjualan_detail (id_order_penjualan, nama_produk, qty, harga) VALUES ('$id_order_penjualan','$nama_produk', '$qty', '$harga')")){ }else{ die ("Terdapat kesalahan3 : ". mysqli_error($konek)); }
+		// $details=mysqli_query($konek, "INSERT INTO order_penjualan_detail (id_order_penjualan, nama_pelanggan, no_invoice, nama_produk, qty, harga) select nama_pelanggan, no_invoice, id_produk, qty, harga from cart");
+		if($details=mysqli_query($konek, "INSERT INTO order_penjualan_detail (id_order_penjualan, nama_produk, qty, harga) VALUES ('$id_order_penjualan','$nama_produk', '$qty', '$harga')")){ }else{ die ("Terdapat kesalahan3 : ". mysqli_error($konek)); }
+		$i++;
+	}
+
 	$total_berat = 0;
 	$x = 0;
 	$stok=mysqli_query($konek, "select cart.id_produk, produk.nama_produk, cart.qty, produk.stok from produk inner join cart on cart.id_produk = produk.id_produk");

@@ -72,6 +72,16 @@ $data=mysqli_fetch_array($produk);
 $nama_produk=$data['nama_produk'];
 mysqli_query($konek, "INSERT INTO order_penjualan_detail(id_order_penjualan, nama_produk, qty, harga) VALUES ('','$nama_produk','$qty','$total_harga')")or die(mysqli_error($konek));
 $_SESSION['status_operasi'] = 'add success';
+
+$pesan_pemberitahuan = 'Terdapat transaksi Pemesanan Produk pada tanggal: '.date('d-m-Y');
+$tipe_pemberitahuan = 'pemesanan_produk';
+$status_pemberitahuan = 'belum';
+$kirim_ke = 'supervisor';
+$tanggal_pemberitahuan = date('Y-m-d');
+$status = 'ok';
+mysqli_query($konek, "INSERT INTO pemberitahuan(pesan_pemberitahuan, tipe_pemberitahuan, status_pemberitahuan, kirim_ke, tanggal_pemberitahuan, status) VALUES ('$pesan_pemberitahuan','$tipe_pemberitahuan','$status_pemberitahuan','$kirim_ke','$tanggal_pemberitahuan','$status')")or die(mysqli_error($konek));
+$_SESSION['status_operasi'] = 'add success';
+
 header("location: ../../pages/index.php?order-confirm");
 
 };

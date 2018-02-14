@@ -11,7 +11,7 @@ function Tanggal($tanggal) {
     return ($hasil);
 }
 
-$kirim_ke = $_SESSION['id_user'];
+$kirim_ke = $_SESSION['hak_akses'];
 
 $sql = "SELECT
         	*
@@ -22,7 +22,7 @@ $sql = "SELECT
         		FROM
         			pemberitahuan
         		WHERE
-        			kirim_ke = ''
+        			kirim_ke = '$kirim_ke'
         		AND tipe_pemberitahuan = 'pemesanan_produk'
         GROUP BY 2
         	) AS x
@@ -32,7 +32,7 @@ $sql = "SELECT
         	FROM
         		pemberitahuan
         	WHERE
-        		kirim_ke = ''
+        		kirim_ke = '$kirim_ke'
         	AND tipe_pemberitahuan = 'pembayaran_produk'
         GROUP BY 2
         ) AS y
@@ -42,7 +42,7 @@ $sql = "SELECT
         	FROM
         		pemberitahuan
         	WHERE
-        		kirim_ke = ''
+        		kirim_ke = '$kirim_ke'
         	AND tipe_pemberitahuan = 'pengiriman_produk'
         GROUP BY 2
         ) AS z";
