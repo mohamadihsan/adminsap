@@ -84,8 +84,7 @@ function convert_to_rupiah($angka)
                                  <div class="col-sm-4">
                                      <p><b>Harga Satuan</b></p>
                                      <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">attach_money</i>
+                                        Rp.
                                         </span>
                                         <div class="form-line">
                                             <input type="text" id="produk_name" name="harga" class="form-control" placeholder="Harga Satuan" readonly>

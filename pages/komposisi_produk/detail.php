@@ -196,6 +196,7 @@
                                         	k.id_bahan_baku,
                                         	bb.kode_bahan_baku,
                                         	bb.nama_bahan_baku,
+                                        	bb.satuan as satuan_bahan_baku,
                                         	k.id_produk,
                                         	p.kode_produk,
                                         	p.nama_produk,
@@ -220,12 +221,13 @@
                                 while ($row=mysqli_fetch_assoc($result)) {
                                     $kode_bahan_baku = $row['kode_bahan_baku'];
                                     $nama_bahan_baku = $row['nama_bahan_baku'];
+                                    $satuan_bahan_baku = $row['satuan_bahan_baku'];
                                     $komposisi = $row['komposisi'];
                                     ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
                                         <td><?= $kode_bahan_baku.' - '.$nama_bahan_baku ?></td>
-                                        <td><?= $komposisi ?></td>
+                                        <td><?= $komposisi.' '.$satuan_bahan_baku ?></td>
                                     </tr>
                                     <?php
                                 }

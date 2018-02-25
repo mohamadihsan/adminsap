@@ -70,13 +70,23 @@ while($bb = mysqli_fetch_array($querybb)){
                                         </select>
                                     </div>
                                 </div>
-                                 <div class="col-sm-2">
+                                 <div class="col-sm-3">
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                             <i class="material-icons">archive</i>
                                         </span>
                                         <div class="form-line">
                                             <input type="number" name="stock" class="form-control" placeholder="Stok" min="0" value="<?php echo $bb['stock'];?>" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">archive</i>
+                                        </span>
+                                        <div class="form-line">
+                                            <input type="text" name="satuan" class="form-control" placeholder="Satuan" value="<?php echo $bb['satuan'];?>" required>
                                         </div>
                                     </div>
                                 </div>

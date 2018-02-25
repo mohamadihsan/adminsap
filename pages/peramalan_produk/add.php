@@ -34,7 +34,7 @@
                             <div class="row clearfix">
                                 <?php
                                 //cek waktu peramalan bisa dilakukan
-                                if (date('d') >= 1 && date('d') <= 15) {
+                                if (date('d') >= 1 && date('d') >= 15) {
                                     ?>
                                     <form action="../controller/peramalan_produk/add.php" id="sign_in" method="POST">
                                       <div class="col-sm-6">
@@ -132,7 +132,8 @@
                                               </div>
                                           </div>
                                       </div>
-                                      <div class="col-sm-2">
+                                      
+                                      <div class="col-sm-2" hidden>
                                           <p>
                                               <b>Bulan Peramalan</b>
                                           </p>
@@ -140,8 +141,54 @@
                                               <span class="input-group-addon">
                                                   <i class="material-icons">date_range</i>
                                               </span>
+                                              <?php
+                                                $bulan = date('m');
+                                                $tahun = date('Y');
+
+                                                if($bulan=='01'){
+                                                    $bulan = '02';
+                                                    $nama_bulan = 'Februari';
+                                                }else if($bulan=='02'){
+                                                    $bulan = '03';
+                                                    $nama_bulan = 'Maret';
+                                                }else if($bulan=='03'){
+                                                    $bulan = '04';
+                                                    $nama_bulan = 'April';
+                                                }else if($bulan=='04'){
+                                                    $bulan = '05';
+                                                    $nama_bulan = 'Mei';
+                                                }else if($bulan=='05'){
+                                                    $bulan = '06';
+                                                    $nama_bulan = 'Juni';
+                                                }else if($bulan=='06'){
+                                                    $bulan = '07';
+                                                    $nama_bulan = 'Juli';
+                                                }else if($bulan=='07'){
+                                                    $bulan = '08';
+                                                    $nama_bulan = 'Agusutus';
+                                                }else if($bulan=='08'){
+                                                    $bulan = '09';
+                                                    $nama_bulan = 'September';
+                                                }else if($bulan=='09'){
+                                                    $bulan = '10';
+                                                    $nama_bulan = 'Oktober';
+                                                }else if($bulan=='10'){
+                                                    $bulan = '11';
+                                                    $nama_bulan = 'November';
+                                                }else if($bulan=='11'){
+                                                    $bulan = '12';
+                                                    $nama_bulan = 'Desember';
+                                                }else if($bulan=='12'){
+                                                    $bulan = '01';
+                                                    $nama_bulan = 'Januari';
+                                                    $tahun = int($tahun) + 1;
+                                                }else {
+                                                    $nama_bulan = '';
+                                                }
+                                              ?>
                                               <select name="bulan" class="form-control show-tick" data-live-search="true" placeholder="Tipe Pelanggan">
-                                                  <option value="01">Januari</option>
+                                                    <option value="<?= $bulan ?>"><?= $nama_bulan ?> </option>    
+                                              <!-- <option value="01">Januari</option>
                                                   <option value="02">Februari</option>
                                                   <option value="03">Maret</option>
                                                   <option value="04">April</option>
@@ -152,11 +199,11 @@
                                                   <option value="09">September</option>
                                                   <option value="10">Oktober</option>
                                                   <option value="11">November</option>
-                                                  <option value="12">Desember</option>
+                                                  <option value="12">Desember</option> -->
                                               </select>
                                           </div>
                                       </div>
-                                      <div class="col-sm-2">
+                                      <div class="col-sm-2" hidden>
                                           <p>
                                               <b>Tahun</b>
                                           </p>
@@ -165,13 +212,28 @@
                                                   <i class="material-icons">date_range</i>
                                               </span>
                                               <select name="tahun" class="form-control show-tick" data-live-search="true" placeholder="Tipe Pelanggan">
-                                                  <option value="2016">2016</option>
+                                                    <option value="<?= $tahun ?>"><?= $tahun ?></option>    
+                                              <!-- <option value="2016">2016</option>
                                                   <option value="2017">2017</option>
                                                   <option value="2018">2018</option>
-                                                  <option value="2019">2019</option>
+                                                  <option value="2019">2019</option> -->
                                               </select>
                                           </div>
                                       </div>
+                                      <div class="col-sm-2">
+                                          <p>
+                                              <b>Peramalan Selanjutnya</b>
+                                          </p>
+                                          <div class="input-group">
+                                              <span class="input-group-addon">
+                                                  <i class="material-icons">date_range</i>
+                                              </span>
+
+                                              <div class="form-line">
+                                                  <input type="text" class="form-control" value="<?= $nama_bulan.' '.$tahun ?>" disabled>
+                                              </div>
+                                            </div>
+                                        </div>   
                                       <div class="col-sm-6 hidden">
                                           <div class="input-group">
                                               <span class="input-group-addon">

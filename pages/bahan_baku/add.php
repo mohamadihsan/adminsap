@@ -75,13 +75,24 @@
                                         </select>
                                     </div>
                                 </div>
-                                 <div class="col-sm-2">
+                                 <div class="col-sm-3">
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                             <i class="material-icons">archive</i>
                                         </span>
                                         <div class="form-line">
                                             <input type="number" name="stock" class="form-control" placeholder="Stok" min="0" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">archive</i>
+                                        </span>
+                                        <div class="form-line">
+                                            <input type="text" name="satuan" class="form-control" placeholder="Satuan" required>
                                         </div>
                                     </div>
                                 </div>

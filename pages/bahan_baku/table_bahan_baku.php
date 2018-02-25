@@ -4,6 +4,7 @@
 			<th>Kode Bahan - baku</th>
 			<th>Nama Bahan - baku</th>
 			<th>Stock</th>
+			<th>Satuan</th>
 			<th>Lokasi Penyimpanan</th>
 			<th>Status</th>
             <?php
@@ -28,6 +29,7 @@
 						<td>$spl[kode_bahan_baku]</td>
 						<td>$spl[nama_bahan_baku]</td>
 						<td>$spl[stock]</td>
+						<td>$spl[satuan]</td>
 						<td>$spl[lokasi_penyimpanan]</td>";
 						if ($spl['stock'] > 0 ){
 				          echo " <td><button class='btn-status bg-gradient-green waves-effect'>TERSEDIA</button></td>";
