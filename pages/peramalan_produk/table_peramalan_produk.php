@@ -12,20 +12,34 @@
 	</thead>
 	<tbody>
 		<?php
-			$queryspl = mysqli_query ($konek, "SELECT * FROM peramalan");
+			$queryspl = mysqli_query ($konek, "SELECT 
+													p.id_peramalan, 
+													p.nama_produk, 
+													p.periode, 
+													p.jumlah_penjualan, 
+													p.hasil_peramalan, 
+													p.selisih, 
+													p.persentase_kesalahan, 
+													pr.satuan 
+												FROM peramalan p 
+												LEFT JOIN 
+													produk pr 
+												ON 
+													pr.id_produk=p.id_produk");
 			if($queryspl == false){
 				die ("Terjadi Kesalahan : ". mysqli_error($konek));
 			}
 
 			while ($spl = mysqli_fetch_array ($queryspl)){
-
+				$hasil_peramalan = ceil($spl['hasil_peramalan']);
+				$selisih = ceil($spl['selisih']);
 				echo "
 					<tr>
 						<td>$spl[nama_produk]</td>
 						<td>$spl[periode]</td>
-						<td>$spl[jumlah_penjualan]</td>
-						<td>$spl[hasil_peramalan]</td>
-						<td>$spl[selisih]</td>
+						<td>$spl[jumlah_penjualan] $spl[satuan]</td>
+						<td>$hasil_peramalan $spl[satuan]</td>
+						<td>$selisih $spl[satuan]</td>
 						<td>$spl[persentase_kesalahan]</td>
 						<td>
 							<a data-toggle='modal' data-target='#hapus' onclick='return hapus(\"".$spl['id_peramalan']."\")'  class='delete-link'><button type='button' class='btn bg-gradient-red btn-circle-table waves-effect waves-circle waves-float' title='Hapus'><i class='material-icons'>delete</i></button></a

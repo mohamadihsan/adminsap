@@ -23,7 +23,7 @@
                     	order_penjualan op
                     LEFT JOIN order_penjualan_detail opd ON opd.id_order_penjualan = op.id_order_penjualan
                     WHERE
-                    	op.approval = 'DISETUJUI'";
+                    	op.approval = 'DISETUJUI' GROUP BY 1,2,3,4,5,6,7";
 			$queryspl = mysqli_query ($konek, $sql);
 			if($queryspl == false){
 				die ("Terjadi Kesalahan : ". mysqli_error($konek));

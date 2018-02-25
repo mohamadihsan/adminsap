@@ -80,9 +80,6 @@ function convert_to_rupiah($angka)
                                  <div class="col-sm-4">
                                      <p><b>Harga Satuan</b></p>
                                      <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">attach_money</i>
-                                        </span>
                                         <div class="form-line">
                                             <input type="text" id="produk_name" name="harga" class="form-control" placeholder="Harga Satuan" readonly>
                                             <script>
@@ -110,7 +107,7 @@ function convert_to_rupiah($angka)
                                             <i class="material-icons">layers</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="text" name="qty" class="form-control text-center" data-rule="quantity" readonly>
+                                            <input type="number" min="1" name="qty" class="form-control text-center" data-rule="quantity">
                                         </div>
                                         <span class="input-group-addon">
                                             <a href="javascript:;" class="spin-up" data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i></a>

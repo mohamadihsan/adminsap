@@ -34,7 +34,7 @@
                             <div class="row clearfix">
                                 <?php
                                 //cek waktu peramalan bisa dilakukan
-                                if (date('d') >= 1 && date('d') >= 15) {
+                                if (date('d') >= 1 && date('d') <= 15) {
                                     ?>
                                     <form action="../controller/peramalan_produk/add.php" id="sign_in" method="POST">
                                       <div class="col-sm-6">

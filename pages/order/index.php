@@ -91,52 +91,62 @@
                         </div>
                         <div class="body">
                             <div class="row clearfix">
-                              <form action="../controller/order/pelanggan_process.php" id="sign_in" method="POST">
-                                <div id="Tambah">
-                                    <div class="col-sm-2 hidden">
-                                    <p><b>Nomor Invoice</b></p>
-                                     <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">receipt</i>
-                                        </span>
-                                        <div class="form-line">
-                                            <input type="text" name="no_invoice" class="form-control" placeholder="Invoice" value="<?php echo $id;  ?>" readonly>
+                            <?php
+                                //cek waktu peramalan bisa dilakukan
+                                if (date('d') >= 1 && date('d') <= 15) {
+                                    ?>
+                                    <form action="../controller/order/pelanggan_process.php" id="sign_in" method="POST">
+                                        <div id="Tambah">
+                                            <div class="col-sm-2 hidden">
+                                            <p><b>Nomor Invoice</b></p>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="material-icons">receipt</i>
+                                                </span>
+                                                <div class="form-line">
+                                                    <input type="text" name="no_invoice" class="form-control" placeholder="Invoice" value="<?php echo $id;  ?>" readonly>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                     <p><b>Pelanggan</b></p>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">person</i>
-                                        </span>
-                                           <select name="nama_pelanggan" class="form-control show-tick" " data-live-search="true">
-                                                <?php
-                                                include '../config/koneksi.php';
+                                        <div class="col-lg-12">
+                                            <p><b>Pelanggan</b></p>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="material-icons">person</i>
+                                                </span>
+                                                <select name="nama_pelanggan" class="form-control show-tick" " data-live-search="true">
+                                                        <?php
+                                                        include '../config/koneksi.php';
 
-                                                $queryproduk = mysqli_query($konek, "SELECT * FROM pelanggan WHERE status = 'Aktif'");
-                                                if($queryproduk == false){
-                                                    die ("Terdapat Kesalahan : ". mysqli_error($konek));
-                                                }
-                                                while ($produk = mysqli_fetch_array($queryproduk)){
-                                                    echo "<option value='$produk[nama_pelanggan]'>$produk[nama_pelanggan]</option>";
-                                                }
-                                            ?>
-                                            </select>
-                                      </div>
-                                </div>
-                                <!-- <button type="button" class="btn bg-gradient btn-circle waves-effect waves-circle waves-float" style="margin-left: 10px;" id="add_order">
-                                <i class="material-icons">add</i>
-                                </button>
-                                <button type="button" class="btn bg-gradient-red btn-circle waves-effect waves-circle waves-float" style="margin-left: 10px;" id="min_order">
-                                <i class="material-icons">clear</i>
-                                </button> -->
-                                 </div>
-                                <div class="col-md-12">
-                                    <button id="add_order" class="btn btn-lg bg-gradient waves-effect" type="submit">LANJUTKAN</button>
-                                    <a href="index.php?pemesanan_produk" class="btn btn-lg bg-gradient-red waves-effect">BATAL</a>
-                                </div>
-                              </form>
+                                                        $queryproduk = mysqli_query($konek, "SELECT * FROM pelanggan WHERE status = 'Aktif'");
+                                                        if($queryproduk == false){
+                                                            die ("Terdapat Kesalahan : ". mysqli_error($konek));
+                                                        }
+                                                        while ($produk = mysqli_fetch_array($queryproduk)){
+                                                            echo "<option value='$produk[nama_pelanggan]'>$produk[nama_pelanggan]</option>";
+                                                        }
+                                                    ?>
+                                                    </select>
+                                            </div>
+                                        </div>
+                                        <!-- <button type="button" class="btn bg-gradient btn-circle waves-effect waves-circle waves-float" style="margin-left: 10px;" id="add_order">
+                                        <i class="material-icons">add</i>
+                                        </button>
+                                        <button type="button" class="btn bg-gradient-red btn-circle waves-effect waves-circle waves-float" style="margin-left: 10px;" id="min_order">
+                                        <i class="material-icons">clear</i>
+                                        </button> -->
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button id="add_order" class="btn btn-lg bg-gradient waves-effect" type="submit">LANJUTKAN</button>
+                                            <a href="index.php?pemesanan_produk" class="btn btn-lg bg-gradient-red waves-effect">BATAL</a>
+                                        </div>
+                                    </form>
+                                    <?php 
+                                }else{
+                                    ?>
+                                    <span class="label label-default">Maaf, Proses Pemesanan Produk hanya dapat dilakukan antara tanggal 1 sampai tanggal 15 pada setiap bulannya</span>
+                                    <?php
+                                } ?>
                             </div>
                         </div>
                     </div>

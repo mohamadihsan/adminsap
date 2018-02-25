@@ -158,8 +158,9 @@
                             <thead>
                         		<tr>
                                     <th width="5%">No</th>
-                        			<th>Bahan Baku</th>
-                        			<th width="70%">Jumlah Kebutuhan</th>
+                        			<th width="30%">Bahan Baku</th>
+                        			<th width="15%">Jumlah Kebutuhan</th>
+                        			<th width="55%">Satuan</th>
                         		</tr>
                         	</thead>
                         	<tbody>
@@ -171,6 +172,7 @@
                                         	a.kode_bahan_baku,
                                         	a.nama_bahan_baku,
                                         	a.komposisi,
+                                            a.satuan,
                                         	b.qty,
                                         	(b.qty * a.komposisi) AS kebutuhan_bahan_baku
                                         FROM
@@ -180,12 +182,13 @@
                                         			kp.id_bahan_baku,
                                         			kp.komposisi,
                                         			bb.kode_bahan_baku,
-                                        			bb.nama_bahan_baku
+                                        			bb.nama_bahan_baku,
+                                                    bb.satuan
                                         		FROM
                                         			komposisi_produk kp
                                         		LEFT JOIN bahan_baku bb ON bb.id_bahan_baku = kp.id_bahan_baku
                                         		WHERE
-                                        			kp.id_produk = (
+                                        			kp.id_produk IN (
                                         				SELECT
                                         					op.id_produk
                                         				FROM
@@ -211,11 +214,13 @@
                                     $kode_bahan_baku = $row['kode_bahan_baku'];
                                     $nama_bahan_baku = $row['nama_bahan_baku'];
                                     $jumlah_kebutuhan_bahan_baku = $row['kebutuhan_bahan_baku'];
+                                    $satuan = $row['satuan'];
                                     ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
                                         <td><?= $kode_bahan_baku.' - '.$nama_bahan_baku ?></td>
                                         <td><?= $jumlah_kebutuhan_bahan_baku ?></td>
+                                        <td><?= $satuan ?></td>
                                     </tr>
                                     <?php
                                 }
