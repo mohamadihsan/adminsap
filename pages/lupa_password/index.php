@@ -17,7 +17,7 @@
         </div>
         <div class="card-table">
             <div class="body">
-                <form id="forgot_password" method="POST">
+                <form id="forgot_password" action="../../controller/lupa_password/index.php" method="POST">
                     <div class="msg">
                         Masukan email anda untuk pengiriman kode verifikasi dan pastikan email anda aktif, bila pesan masuk tidak ada harap cek folder Spam di email anda
                     </div>

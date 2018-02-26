@@ -27,6 +27,15 @@ if(isset ($_GET ["Err"]) && !empty ($_GET ["Err"])){
         case 6:
             $Err = "Maaf, Terjadi Kesalahan";
         break;
+        case 7:
+            $Err = "Maaf, Terjadi Kesalahan dalam mereset Password";
+        break;
+        case 8:
+            $Err = "Maaf, Terjadi Kesalahan dalam mengirim ke email";
+        break;
+        case 9:
+            $Err = "Email yang anda masukkan tidak terdaftar";
+        break;
     }
 }
 
@@ -36,6 +45,9 @@ if(isset ($_GET["Notif"]) && !empty ($_GET["Notif"])){
     switch($_GET["Notif"]){
         case 1:
             $Notif = "User berhasil dibuat, silahkan Login";
+        break;
+        case 2:
+            $Notif = "Password telah dikirim ke email anda";
         break;
     }
 }
